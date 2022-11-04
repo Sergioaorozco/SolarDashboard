@@ -97,6 +97,7 @@
       </div>
     </main>
   </div>
+  <router-view/>
 </template>
 <script>
 export default {

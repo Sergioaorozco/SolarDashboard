@@ -6,7 +6,7 @@
         class="lg:w-1/2 w-full flex flex-col justify-center items-center h-screen"
       >
         <form
-          class="shadow-lg px-8 py-10 rounded-lg bg-white w-10/12 flex flex-col gap-3"
+          class="shadow-lg px-6 py-10 rounded-lg bg-white w-10/12 flex flex-col gap-3"
         >
           <h1 class="text-4xl text-center sm:text-left text-slate-800 font-bold mb-3">Welcome Back</h1>
           <div class="flex flex-col md:flex-row gap-2">
@@ -17,7 +17,7 @@
                   w-full
                   h-7
                   justify-center
-                  px-8
+                  px-2
                   py-5
                   gap-2
                   border-gray-200
@@ -75,7 +75,7 @@
                   w-full
                   h-7
                   justify-center
-                  px-8
+                  px-2
                   py-5
                   gap-2
                   border-gray-200

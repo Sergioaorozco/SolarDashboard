@@ -71,12 +71,9 @@
             <label for="password">Password</label>
             <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Email" type="password" name="password" id="password" />
           </div>
-          <button
-            class="bg-slate-800 text-white hover:bg-slate-900 transition-all w-full px-5 py-2 rounded-md mt-2"
-            type="submit"
-          >
+          <router-link to="/home" class="bg-slate-800 text-center text-white hover:bg-slate-900 transition-all w-full px-5 py-2 rounded-md mt-2" type="submit">
             Sign in
-          </button>
+          </router-link>
         </form>
       <!-- Social Media -->
           <a  target="_blank" class="flex gap-2 hover:underline" href="https://github.com/Sergioaorozco/SolarDashboard">

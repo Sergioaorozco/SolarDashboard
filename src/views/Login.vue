@@ -100,9 +100,6 @@
 import { loginWithGithub, loginWithGoogle } from '../firebase/client'
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 // Div Selectors
-const githubLogin = document.getElementById('githubLogin')
-const googleLogin = document.getElementById('googleLogin')
-const mailLogin = document.getElementById('mailLogin')
 const email = document.getElementById('clientEmail')
 const password = document.getElementById('clientPass')
 export default {
@@ -112,6 +109,20 @@ export default {
   methods: {
     GoogleSignIn() {
       loginWithGoogle()
+    },
+    GithubSignIn() {
+      loginWithGithub()
+    },
+    EmailSign(e){
+      e.preventDefault()
+        const auth = getAuth()
+        createUserWithEmailAndPassword(auth, email.value, password.value)
+          .then((result) => {
+            const user = result.user
+            console.log(user)
+          }).catch((error) => {
+            console.log(error)
+          })
     }
   }
 };

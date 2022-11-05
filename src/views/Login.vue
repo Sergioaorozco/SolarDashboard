@@ -71,9 +71,9 @@
             <label for="password">Password</label>
             <input id="clientPass" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Email" type="password" name="password"/>
           </div>
-          <router-link class="bg-slate-800 text-center text-white hover:bg-slate-900 transition-all w-full px-5 py-2 rounded-md mt-2" type="submit" id="mailLogin">
+          <a class="bg-slate-800 text-center text-white hover:bg-slate-900 transition-all w-full px-5 py-2 rounded-md mt-2" type="submit" id="mailLogin">
             Sign in
-          </router-link>
+          </a>
           <p class="text-red-800" v-if="ErrorMessage">There was an error when you try to log in</p>
         </form>
       <!-- Social Media -->

@@ -98,11 +98,14 @@
 </template>
 <script>
 // Configuration
-import { loginWithGithub, loginWithGoogle } from '../firebase/client'
+import { getAuth, signInWithPopup, GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth'
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 // Div Selectors
+const providerGithub = new GithubAuthProvider()
+const providerGoogle = new GoogleAuthProvider()
 const email = document.getElementById('clientEmail')
 const password = document.getElementById('clientPass')
+const auth = getAuth()
 export default {
   data() {
     return {
@@ -111,10 +114,28 @@ export default {
   },
   methods: {
     GoogleSignIn() {
-      loginWithGoogle()
+      signInWithPopup(auth, providerGoogle)
+        .then(() => {
+          if(user){
+            console.log(user, ' your login was successfull')
+            router.push('/home')
+          }
+        }).catch((error) => {
+          this.Erromessage = true
+          console.log(error)
+        })
     },
     GithubSignIn() {
-      loginWithGithub()
+      signInWithPopup(auth, providerGithub)
+        .then(() => {
+          if(user){
+            console.log(user, ' your login was successfull')
+            router.push('/home')
+          }
+        }).catch((error) => {
+          this.Erromessage = true
+          console.log(error)
+        })
     },
     EmailSign(e){
       e.preventDefault()

@@ -13,7 +13,7 @@
         >
           <h1 class="text-3xl text-center text-slate-800 font-bold mb-3">Welcome Back</h1>
           <div class="flex flex-col lg:flex-row gap-2 w-full">
-            <router-link to="/home" class="flex w-full lg:w-1/2">
+            <a class="flex w-full lg:w-1/2" id="googleLogin" @click="GoogleSignIn">
               <div
                 class="flex w-full h-7 justify-center px-1 py-5 gap-2 border-gray-200 rounded-md border text-gray-500 bg-white transition-all hover:bg-gray-200 items-center">
                 <svg class="w-5 h-5" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -43,8 +43,8 @@
                 </svg>
                 <p>Sign in with Google</p>
               </div>
-            </router-link>
-            <router-link to="/home" class="flex w-full lg:w-1/2">
+            </a>
+            <router-link to="/home" class="flex w-full lg:w-1/2" id="githubLogin">
               <div
                 class="flex w-full h-7 justify-center px-1 py-5 gap-2 border-gray-200 rounded-md border text-gray-500 bg-white transition-all hover:bg-gray-200 items-center">
                 <svg class="w-5 h-5" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github"
@@ -64,14 +64,14 @@
           <!-- input Email -->
           <div class="flex flex-col">
             <label for="email">Email</label>
-            <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="example@solar.com" type="email" name="emailValue" id="email" />
+            <input id="clientEmail" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="example@solar.com" type="email" name="emailValue" />
           </div>
           <!-- Input Password -->
           <div class="flex flex-col">
             <label for="password">Password</label>
-            <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Email" type="password" name="password" id="password" />
+            <input id="clientPass" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Email" type="password" name="password"/>
           </div>
-          <router-link to="/home" class="bg-slate-800 text-center text-white hover:bg-slate-900 transition-all w-full px-5 py-2 rounded-md mt-2" type="submit">
+          <router-link to="/home" class="bg-slate-800 text-center text-white hover:bg-slate-900 transition-all w-full px-5 py-2 rounded-md mt-2" type="submit" id="mailLogin">
             Sign in
           </router-link>
         </form>
@@ -96,10 +96,24 @@
   </div>
 </template>
 <script>
+// Configuration
+import { loginWithGithub, loginWithGoogle } from '../firebase/client'
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
+// Div Selectors
+const githubLogin = document.getElementById('githubLogin')
+const googleLogin = document.getElementById('googleLogin')
+const mailLogin = document.getElementById('mailLogin')
+const email = document.getElementById('clientEmail')
+const password = document.getElementById('clientPass')
 export default {
   data() {
     return {};
   },
+  methods: {
+    GoogleSignIn() {
+      loginWithGoogle()
+    }
+  }
 };
 </script>
 <style scoped>

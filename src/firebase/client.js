@@ -1,7 +1,4 @@
 import firebase from 'firebase/compat/app'
-import { getAuth, signInWithPopup, GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth'
-const providerGithub = new GithubAuthProvider()
-const providerGoogle = new GoogleAuthProvider()
 
 // Firebase Configuration
 const firebaseConfig = {

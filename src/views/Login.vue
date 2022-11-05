@@ -117,8 +117,8 @@ export default {
       signInWithPopup(auth, providerGoogle)
         .then(() => {
           if(user){
+            router.push('/home')
             console.log(user, ' your login was successfull')
-            $router.push('/home')
           }
         }).catch((error) => {
           this.ErrorMessage = true
@@ -139,7 +139,6 @@ export default {
     },
     EmailSign(e){
       e.preventDefault()
-        const auth = getAuth()
         createUserWithEmailAndPassword(auth, email.value, password.value)
           .then((result) => {
             const user = result.user

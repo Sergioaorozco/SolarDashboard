@@ -121,7 +121,7 @@ export default {
             router.push('/home')
           }
         }).catch((error) => {
-          this.Erromessage = true
+          this.ErrorMessage = true
           console.log(error)
         })
     },
@@ -133,7 +133,7 @@ export default {
             router.push('/home')
           }
         }).catch((error) => {
-          this.Erromessage = true
+          this.ErrorMessage = true
           console.log(error)
         })
     },

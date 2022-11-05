@@ -98,8 +98,7 @@
 </template>
 <script>
 // Configuration
-import { getAuth, signInWithPopup, GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth'
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, signInWithPopup, GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword  } from 'firebase/auth'
 // Div Selectors
 const providerGithub = new GithubAuthProvider()
 const providerGoogle = new GoogleAuthProvider()

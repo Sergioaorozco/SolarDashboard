@@ -44,7 +44,7 @@
                 <p>Sign in with Google</p>
               </div>
             </a>
-            <router-link to="/home" class="flex w-full lg:w-1/2" id="githubLogin">
+            <router-link class="flex w-full lg:w-1/2" id="githubLogin">
               <div
                 class="flex w-full h-7 justify-center px-1 py-5 gap-2 border-gray-200 rounded-md border text-gray-500 bg-white transition-all hover:bg-gray-200 items-center">
                 <svg class="w-5 h-5" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github"
@@ -71,7 +71,7 @@
             <label for="password">Password</label>
             <input id="clientPass" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Email" type="password" name="password"/>
           </div>
-          <router-link to="/home" class="bg-slate-800 text-center text-white hover:bg-slate-900 transition-all w-full px-5 py-2 rounded-md mt-2" type="submit" id="mailLogin">
+          <router-link class="bg-slate-800 text-center text-white hover:bg-slate-900 transition-all w-full px-5 py-2 rounded-md mt-2" type="submit" id="mailLogin">
             Sign in
           </router-link>
         </form>

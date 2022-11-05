@@ -16,23 +16,3 @@ const firebaseConfig = {
 
 // Initialize App
 firebase.initializeApp(firebaseConfig)
-
-export const loginWithGithub = () => {
-  const auth = getAuth()
-  signInWithPopup(auth, providerGithub)
-  .then((user) => {
-    console.log(user)
-  }).catch((error) => {
-    console.log(error)
-  })
-}
-
-export const loginWithGoogle = () => {
-  const auth = getAuth()
-  signInWithPopup(auth, providerGoogle)
-  .then((user) => {
-    console.log(user)
-  }).catch((error) => {
-    console.log(error)
-  })
-}

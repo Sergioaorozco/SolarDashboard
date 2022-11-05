@@ -74,6 +74,7 @@
           <router-link class="bg-slate-800 text-center text-white hover:bg-slate-900 transition-all w-full px-5 py-2 rounded-md mt-2" type="submit" id="mailLogin">
             Sign in
           </router-link>
+          <p class="text-red-800" v-if="ErrorMessage">There was an error when you try to log in</p>
         </form>
       <!-- Social Media -->
           <a  target="_blank" class="flex gap-2 hover:underline" href="https://github.com/Sergioaorozco/SolarDashboard">
@@ -104,7 +105,9 @@ const email = document.getElementById('clientEmail')
 const password = document.getElementById('clientPass')
 export default {
   data() {
-    return {};
+    return {
+      ErrorMessage: false
+    };
   },
   methods: {
     GoogleSignIn() {

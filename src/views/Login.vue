@@ -44,7 +44,7 @@
                 <p>Sign in with Google</p>
               </div>
             </a>
-            <router-link class="flex w-full lg:w-1/2" id="githubLogin">
+            <a class="flex w-full lg:w-1/2" id="githubLogin">
               <div
                 class="flex w-full h-7 justify-center px-1 py-5 gap-2 border-gray-200 rounded-md border text-gray-500 bg-white transition-all hover:bg-gray-200 items-center">
                 <svg class="w-5 h-5" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github"
@@ -54,7 +54,7 @@
                 </svg>
                 <p>Sign in with Github</p>
               </div>
-            </router-link>
+            </a>
           </div>
           <div class="text-center inline-flex justify-center items-center w-full">
             <hr class="my-4 w-64 h-px bg-gray-200 border-0 dark:bg-gray-700" />

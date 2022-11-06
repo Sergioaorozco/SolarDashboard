@@ -133,6 +133,7 @@ export default {
       signInWithPopup(auth, providerGoogle)
         .then((result) => {
           const user = result.user
+          console.log(user)
           if(user){
             router.push('/home')
             console.log('your login was successfull')

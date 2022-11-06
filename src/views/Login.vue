@@ -192,6 +192,11 @@ export default {
           }
           })
     }
+  },
+  computed() {
+    this.GoogleSignIn()
+    this.GithubSignIn()
+    this.EmailSign()
   }
 };
 </script>

@@ -131,13 +131,14 @@ export default {
   methods: {
     GoogleSignIn() {
       signInWithPopup(auth, providerGoogle)
-        .then((user) => {
+        .then((result) => {
+          const user = result.user
           if(user){
             router.push('/home')
             console.log('your login was successfull')
           }
         }).catch((error) => {
-          console.log(error.code)
+          console.log(error)
           this.ErrorMessage = true
           switch(error.code) {
             case "auth/account-exists-with-different-credential":

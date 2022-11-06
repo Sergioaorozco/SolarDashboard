@@ -152,9 +152,9 @@ export default {
     },
     GithubSignIn() {
       signInWithPopup(auth, providerGithub)
-        .then((user) => {
-          if(user){
-            console.log(user, ' your login was successfull')
+        .then((result) => {
+          if(result.user){
+            console.log('your login was successfull')
             router.push('/home')
           }
         }).catch((error) => {

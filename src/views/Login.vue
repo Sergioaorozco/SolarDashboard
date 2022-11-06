@@ -7,7 +7,7 @@
       >
       <!-- Title Left Side Logo -->
       <h1 class="px-6 text-slate-400 self-center font-bold text-3xl">SolarBoard</h1>
-      <!-- Login --> 
+      <!-- Login -->
         <form
           class="shadow-lg px-6 py-5 lg:py-10 rounded-lg self-center bg-white md:w-10/12 lg:w-7/12 w-4/5 flex flex-col gap-3"
         >
@@ -126,10 +126,8 @@ export default {
     return {
       ErrorMessage: false,
       errMsg: "",
+      authData: null
     };
-  },
-  prop: {
-    authData: null
   },
   methods: {
     GoogleSignIn() {
@@ -138,9 +136,10 @@ export default {
           const user = result.user
           console.log(user)
           if(user){
-            router.push('/home')
             console.log('your login was successfull')
-            this.authData = user
+            this.authData = result
+            this.$emit('userData', authData)
+            router.push('/home')
           }
         }).catch((error) => {
           console.log(error)

@@ -1,19 +1,25 @@
 <template>
-  <div v-for="data in authData" :key="data.accessToken" >
+  <div>
     <figure>
-      <img src="data.displayName" alt="">
+      <img src="" alt="">
     </figure>
-    <h1>This is the home</h1>
+    <h1>Welcome</h1>
   </div>
 </template>
 <script>
-import authData from './Login.vue'
+import data from '../views/Home.vue'
 export default {
   data () {
     return {
-      UserCredentials: authData
+      UserInfo: data
     }
+  },
+  props: {
+    // userInfo: Object
+  },
+  methods: {
   }
+
 
 }
 </script>

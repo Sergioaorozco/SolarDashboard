@@ -143,10 +143,10 @@ export default {
           this.ErrorMessage = true
           switch(error.code) {
             case "auth/account-exists-with-different-credential":
-              errMsg = "Invalid Email.";
+              this.errMsg = "Invalid Email.";
               break;
             case "auth/user-not-found":
-              errMsg = "You're not authorized to access this application. Please Sign Up.";
+              this.errMsg = "You're not authorized to access this application. Please Sign Up.";
               break;
           }
         })
@@ -163,10 +163,10 @@ export default {
           console.log(error)
           switch(error.code) {
             case "auth/account-exists-with-different-credential":
-              errMsg = "Invalid Email.";
+              this.errMsg = "Invalid Email.";
               break;
             case "auth/user-not-found":
-              errMsg = "You're not authorized to access this application. Please Sign Up.";
+              this.errMsg = "You're not authorized to access this application. Please Sign Up.";
               break;
           }
         })
@@ -182,22 +182,17 @@ export default {
             console.log(error)
             switch (error.code) {
               case "auth/invalid-email":
-                errMsg = "Invalid Email.";
+                this.errMsg = "Invalid Email.";
                 break;
               case "auth/user-not-found":
-                errMsg = "No account with that e-mail was found.";
+                this.errMsg = "No account with that e-mail was found.";
                 break;
               case "auth/worng-password":
-                errMsg = "Incorrect Password.";
+                this.errMsg = "Incorrect Password.";
                 break;
           }
           })
     }
-  },
-  computed() {
-    this.GoogleSignIn()
-    this.GithubSignIn()
-    this.EmailSign()
   }
 };
 </script>

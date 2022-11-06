@@ -74,7 +74,7 @@
           <a class="bg-slate-800 text-center text-white hover:bg-slate-900 transition-all w-full px-5 py-2 rounded-md mt-2" type="submit" id="mailLogin">
             Sign in
           </a>
-          <p class="text-red-800" v-if="ErrorMessage">There was an error when you try to log in</p>
+          <p class="text-red-800" v-if="ErrorMessage">{{errMsg}}</p>
         </form>
       <!-- Social Media -->
           <a  target="_blank" class="flex gap-2 hover:underline" href="https://github.com/Sergioaorozco/SolarDashboard">
@@ -100,6 +100,7 @@
 // Configuration
 import { getAuth, signInWithPopup, GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword  } from 'firebase/auth'
 import firebase from 'firebase/compat/app'
+import {useRouter} from 'vue-router'
 // Firebase Configuration
 const firebaseConfig = {
   apiKey: 'AIzaSyDVkwDplSu8sXq_rIa-Wl9HVGni5-QK6l0',
@@ -120,10 +121,12 @@ const providerGoogle = new GoogleAuthProvider()
 const email = document.getElementById('clientEmail')
 const password = document.getElementById('clientPass')
 const auth = getAuth()
+const router = useRouter()
 export default {
   data() {
     return {
-      ErrorMessage: false
+      ErrorMessage: false,
+      errMsg: ''
     };
   },
   methods: {
@@ -135,8 +138,8 @@ export default {
             console.log(user, ' your login was successfull')
           }
         }).catch((error) => {
+          console.log(error.code)
           this.ErrorMessage = true
-          console.log(error)
         })
     },
     GithubSignIn() {
@@ -159,6 +162,17 @@ export default {
             console.log(user)
           }).catch((error) => {
             console.log(error)
+          switch (error.code) {
+            case "auth/invalid-email":
+              errMsg.value = "Invalid Email.";
+              break;
+            case "auth/user-not-found":
+              errMsg.value = "No account with that e-mail was found.";
+              break;
+            case "auth/worng-password":
+              errMsg.value = "Incorrect Password.";
+              break;
+          }
           })
     }
   }

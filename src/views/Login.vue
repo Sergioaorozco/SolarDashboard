@@ -139,6 +139,14 @@ export default {
           }
         }).catch((error) => {
           console.log(error.code)
+          switch(error.code) {
+            case "auth/account-exists-with-different-credential":
+              errMsg.value = "Invalid Email.";
+              break;
+            case "auth/user-not-found":
+              errMsg.value = "You're not authorized to access this application. Please Sign Up.";
+              break;
+          }
           this.ErrorMessage = true
         })
     },
@@ -152,6 +160,14 @@ export default {
         }).catch((error) => {
           this.ErrorMessage = true
           console.log(error)
+          switch(error.code) {
+            case "auth/account-exists-with-different-credential":
+              errMsg.value = "Invalid Email.";
+              break;
+            case "auth/user-not-found":
+              errMsg.value = "You're not authorized to access this application. Please Sign Up.";
+              break;
+          }
         })
     },
     EmailSign(e){

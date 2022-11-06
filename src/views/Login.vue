@@ -100,7 +100,7 @@
 // Configuration
 import { getAuth, signInWithPopup, GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword  } from 'firebase/auth'
 import firebase from 'firebase/compat/app'
-import {useRouter} from 'vue-router'
+import router from '../router/index.js'
 // Firebase Configuration
 const firebaseConfig = {
   apiKey: 'AIzaSyDVkwDplSu8sXq_rIa-Wl9HVGni5-QK6l0',
@@ -121,7 +121,6 @@ const providerGoogle = new GoogleAuthProvider()
 const email = document.getElementById('clientEmail')
 const password = document.getElementById('clientPass')
 const auth = getAuth()
-const router = useRouter()
 export default {
   data() {
     return {

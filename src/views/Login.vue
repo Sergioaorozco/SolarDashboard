@@ -126,7 +126,7 @@ export default {
   data() {
     return {
       ErrorMessage: false,
-      errMsg: ''
+      errMsg: null
     };
   },
   methods: {
@@ -139,6 +139,7 @@ export default {
           }
         }).catch((error) => {
           console.log(error.code)
+          this.ErrorMessage = true
           switch(error.code) {
             case "auth/account-exists-with-different-credential":
               errMsg.value = "Invalid Email.";
@@ -147,7 +148,6 @@ export default {
               errMsg.value = "You're not authorized to access this application. Please Sign Up.";
               break;
           }
-          this.ErrorMessage = true
         })
     },
     GithubSignIn() {
@@ -177,17 +177,18 @@ export default {
             const user = result.user
             console.log(user)
           }).catch((error) => {
+            this.ErrorMessage = true
             console.log(error)
-          switch (error.code) {
-            case "auth/invalid-email":
-              errMsg.value = "Invalid Email.";
-              break;
-            case "auth/user-not-found":
-              errMsg.value = "No account with that e-mail was found.";
-              break;
-            case "auth/worng-password":
-              errMsg.value = "Incorrect Password.";
-              break;
+            switch (error.code) {
+              case "auth/invalid-email":
+                errMsg.value = "Invalid Email.";
+                break;
+              case "auth/user-not-found":
+                errMsg.value = "No account with that e-mail was found.";
+                break;
+              case "auth/worng-password":
+                errMsg.value = "Incorrect Password.";
+                break;
           }
           })
     }

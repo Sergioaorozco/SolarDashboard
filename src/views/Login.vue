@@ -74,7 +74,7 @@
           <a class="bg-slate-800 text-center text-white hover:bg-slate-900 transition-all w-full px-5 py-2 rounded-md mt-2" type="submit" id="mailLogin">
             Sign in
           </a>
-          <p class="text-red-800" v-if="ErrorMessage">{{errMsg}}</p>
+          <p class="text-red-800" v-if="ErrorMessage">{{ errMsg }}</p>
         </form>
       <!-- Social Media -->
           <a  target="_blank" class="flex gap-2 hover:underline" href="https://github.com/Sergioaorozco/SolarDashboard">
@@ -125,7 +125,7 @@ export default {
   data() {
     return {
       ErrorMessage: false,
-      errMsg: null
+      errMsg: ""
     };
   },
   methods: {

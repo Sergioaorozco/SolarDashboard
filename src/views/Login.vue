@@ -129,7 +129,7 @@ export default {
   methods: {
     GoogleSignIn() {
       signInWithPopup(auth, providerGoogle)
-        .then(() => {
+        .then((user) => {
           if(user){
             router.push('/home')
             console.log(user, ' your login was successfull')
@@ -141,7 +141,7 @@ export default {
     },
     GithubSignIn() {
       signInWithPopup(auth, providerGithub)
-        .then(() => {
+        .then((user) => {
           if(user){
             console.log(user, ' your login was successfull')
             router.push('/home')

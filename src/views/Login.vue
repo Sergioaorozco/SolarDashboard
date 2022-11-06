@@ -71,7 +71,7 @@
             <label for="password">Password</label>
             <input id="clientPass" autocomplete="current-email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Email" type="password" name="password"/>
           </div>
-          <a class="bg-slate-800 text-center text-white hover:bg-slate-900 transition-all w-full px-5 py-2 rounded-md mt-2" type="submit" id="mailLogin">
+          <a class="bg-slate-800 text-center text-white hover:bg-slate-900 transition-all w-full px-5 py-2 rounded-md mt-2" type="submit" id="mailLogin" @submit="EmailSign">
             Sign in
           </a>
           <p class="text-red-800" v-if="ErrorMessage">{{ errMsg }}</p>
@@ -98,7 +98,7 @@
 </template>
 <script>
 // Configuration
-import { getAuth, signInWithPopup, GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword  } from 'firebase/auth'
+import { getAuth, signInWithPopup, GithubAuthProvider, GoogleAuthProvider, signInWithEmailAndPassword  } from 'firebase/auth'
 import firebase from 'firebase/compat/app'
 import router from '../router/index.js'
 // Firebase Configuration
@@ -173,7 +173,7 @@ export default {
     },
     EmailSign(e){
       e.preventDefault()
-        createUserWithEmailAndPassword(auth, email.value, password.value)
+        signInWithEmailAndPassword(auth, email.value, password.value)
           .then((result) => {
             const user = result.user
             console.log(user)
@@ -187,7 +187,7 @@ export default {
               case "auth/user-not-found":
                 this.errMsg = "No account with that e-mail was found.";
                 break;
-              case "auth/worng-password":
+              case "auth/wrong-password":
                 this.errMsg = "Incorrect Password.";
                 break;
           }

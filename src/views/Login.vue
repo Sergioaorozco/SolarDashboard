@@ -138,7 +138,6 @@ export default {
           if(user){
             console.log('your login was successfull')
             this.authData = result
-            this.$emit('userData', authData)
             router.push('/home')
           }
         }).catch((error) => {

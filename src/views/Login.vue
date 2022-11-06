@@ -125,8 +125,11 @@ export default {
   data() {
     return {
       ErrorMessage: false,
-      errMsg: ""
+      errMsg: "",
     };
+  },
+  prop: {
+    authData: null
   },
   methods: {
     GoogleSignIn() {
@@ -137,6 +140,7 @@ export default {
           if(user){
             router.push('/home')
             console.log('your login was successfull')
+            this.authData = user
           }
         }).catch((error) => {
           console.log(error)

@@ -64,12 +64,12 @@
           <!-- input Email -->
           <div class="flex flex-col">
             <label for="email">Email</label>
-            <input id="clientEmail" autocomplete="current-password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="example@solar.com" type="email" name="emailValue" />
+            <input id="clientEmail" autocomplete="current-email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="example@solar.com" type="email" name="emailValue" />
           </div>
           <!-- Input Password -->
           <div class="flex flex-col">
             <label for="password">Password</label>
-            <input id="clientPass" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Email" type="password" name="password"/>
+            <input id="clientPass" autocomplete="current-email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Email" type="password" name="password"/>
           </div>
           <a class="bg-slate-800 text-center text-white hover:bg-slate-900 transition-all w-full px-5 py-2 rounded-md mt-2" type="submit" id="mailLogin">
             Sign in

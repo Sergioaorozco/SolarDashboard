@@ -135,7 +135,7 @@ export default {
         .then((user) => {
           if(user){
             router.push('/home')
-            console.log(user, ' your login was successfull')
+            console.log('your login was successfull')
           }
         }).catch((error) => {
           console.log(error.code)

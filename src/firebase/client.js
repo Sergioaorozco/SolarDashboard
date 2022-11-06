@@ -1,4 +1,6 @@
 import firebase from 'firebase/compat/app'
+import { getAuth, signInWithPopup, GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword  } from 'firebase/auth'
+
 
 // Firebase Configuration
 const firebaseConfig = {

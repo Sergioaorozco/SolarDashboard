@@ -8,9 +8,7 @@
       <!-- Title Left Side Logo -->
       <h1 class="px-6 text-slate-400 self-center font-bold text-3xl">SolarBoard</h1>
       <!-- Login -->
-        <form
-          class="shadow-lg px-6 py-5 lg:py-10 rounded-lg self-center bg-white md:w-10/12 lg:w-7/12 w-4/5 flex flex-col gap-3"
-        >
+      <div class="shadow-lg px-6 py-5 lg:py-10 rounded-lg self-center bg-white md:w-10/12 lg:w-7/12 w-4/5 flex flex-col gap-3">
           <h1 class="text-3xl text-center text-slate-800 font-bold mb-3">Welcome Back</h1>
           <div class="flex flex-col lg:flex-row gap-2 w-full">
             <a class="flex w-full lg:w-1/2" id="googleLogin" @click="GoogleSignIn">
@@ -61,21 +59,25 @@
             <span
               class="absolute px-3 font-medium text-gray-900 bg-white dark:text-white dark:bg-gray-900">or</span>
           </div>
+        <form @submit="EmailSign" method="post" >
           <!-- input Email -->
-          <div class="flex flex-col">
-            <label for="email">Email</label>
-            <input id="clientEmail" autocomplete="current-email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="example@solar.com" type="email" name="emailValue" />
+          <div class="flex flex-col mb-2">
+            <label for="clientEmail">Email</label>
+            <input v-if="ErrorMessage" class="text-red-500 block w-full p-2.5 target:bg-red-200 bg-red-200 focus:bg-gray-50 focus:text-gray-900 border-red-400 text-sm rounded-lg border" placeholder="example@solar.com" type="email" name="emailValue" id="clientEmail" autocomplete="current-email"/>
+            <input v-else class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  focus:border-blue-500 block w-full p-2.5" placeholder="example@solar.com" type="email" name="emailValue" id="clientEmail" autocomplete="current-email"/>
           </div>
           <!-- Input Password -->
-          <div class="flex flex-col">
-            <label for="password">Password</label>
-            <input id="clientPass" autocomplete="current-email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Email" type="password" name="password"/>
+          <div class="flex flex-col mb-2">
+            <label for="clientPass">Password</label>
+            <input v-if="ErrorMessage" id="clientPass" autocomplete="current-pass" class=" text-red-500 block w-full p-2.5 target:bg-red-200 bg-red-200 focus:text-gray-900 border-red-400 focus:bg-gray-50 text-sm rounded-lg border" placeholder="Email" type="password" name="password"/>
+            <input v-else id="clientPass" autocomplete="current-pass" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Email" type="password" name="password"/>
           </div>
-          <a class="bg-slate-800 text-center text-white hover:bg-slate-900 transition-all w-full px-5 py-2 rounded-md mt-2" type="submit" id="mailLogin" @submit="EmailSign">
+          <button class="bg-slate-800 text-center text-white hover:bg-slate-900 transition-all w-full px-5 py-2 rounded-md mt-2" type="submit" id="mailLogin">
             Sign in
-          </a>
-          <p class="text-red-800" v-if="ErrorMessage">{{ errMsg }}</p>
+          </button>
+          <p class="my-3 mx-1 text-red-800" v-if="ErrorMessage">{{ errMsg }}</p>
         </form>
+      </div>
       <!-- Social Media -->
           <a  target="_blank" class="flex gap-2 hover:underline" href="https://github.com/Sergioaorozco/SolarDashboard">
             <p>Check out the Code</p>
@@ -118,8 +120,6 @@ firebase.initializeApp(firebaseConfig)
 // Div Selectors
 const providerGithub = new GithubAuthProvider()
 const providerGoogle = new GoogleAuthProvider()
-const email = document.getElementById('clientEmail')
-const password = document.getElementById('clientPass')
 const auth = getAuth()
 export default {
   data() {
@@ -173,9 +173,11 @@ export default {
           }
         })
     },
-    EmailSign(e){
+    async EmailSign(e){
+      const email = document.getElementById('clientEmail').value
+      const password = document.getElementById('clientPass').value
       e.preventDefault()
-        signInWithEmailAndPassword(auth, email.value, password.value)
+        signInWithEmailAndPassword(auth, email, password)
           .then((result) => {
             const user = result.user
             console.log(user)

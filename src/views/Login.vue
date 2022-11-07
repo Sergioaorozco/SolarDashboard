@@ -138,8 +138,12 @@ export default {
           if(user){
             console.log('your login was successfull')
             this.authData = result
-            router.push('/home')
-          }
+            this.$emit('userData', this.authData)
+            router.push({
+              name:'home',
+              params: {userInfo:(user.uid)},
+              },
+          )}
         }).catch((error) => {
           console.log(error)
           this.ErrorMessage = true

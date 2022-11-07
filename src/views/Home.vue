@@ -3,22 +3,19 @@
     <figure>
       <img src="" alt="">
     </figure>
-    <h1>Welcome</h1>
+    <h1>Welcomee {{userLogged.displayName}}</h1>
   </div>
 </template>
 <script>
-import data from '../views/Home.vue'
 export default {
   data () {
     return {
-      UserInfo: data
+      userInfo:this.$route.params.userInfo
     }
   },
   props: {
-    // userInfo: Object
+    userLogged: {}
   },
-  methods: {
-  }
 
 
 }

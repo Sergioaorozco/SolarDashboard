@@ -9,7 +9,7 @@
       <div class="sm:w-2/4 lg:w-4/12 w-4/5 flex justify-center flex-col">
         <div class="shadow-lg px-6 py-5 lg:py-10 w-full rounded-lg self-center bg-white flex flex-col gap-3 mb-3">
             <h1 class="text-3xl text-center text-slate-800 font-bold mb-3">Create an Account</h1>
-            <form>
+            <form @submit="EmailSignUp">
                 <div class="grid gap-6 mb-6 md:grid-cols-2">
                     <div>
                         <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">First name</label>
@@ -38,7 +38,7 @@
                     </div>
                     <label for="remember" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-400">I agree with the <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a>.</label>
                 </div>
-                <button @submit="EmailSignUp" type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create Account</button>
+                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create Account</button>
             </form>
         </div>
         <router-link to="/" class="text-white  justify-center self-center underline" href="">Already have an account? Login here</router-link>
@@ -79,37 +79,24 @@ const auth = getAuth()
 export default {
   data() {
     return {
-      ErrorMessage: false,
-      errMsg: "",
+
       authData: null
     };
   },
   methods: {
     EmailSignUp(e){
-      e.preventDefault()
       const email = document.getElementById('email').value
       const password = document.getElementById('password').value
-        createUserWithEmailAndPassword(auth, email, password)
-          .then((result) => {
-            console.log(result)
-            router.push({
-              name:'login',
-            })
-          }).catch((error) => {
-            this.ErrorMessage = true
-            console.log(error)
-            switch (error.code) {
-              case "auth/invalid-email":
-                this.errMsg = "Invalid Email.";
-                break;
-              case "auth/user-not-found":
-                this.errMsg = "No account with that e-mail was found.";
-                break;
-              case "auth/wrong-password":
-                this.errMsg = "Incorrect Password.";
-                break;
-          }
-          })
+      e.preventDefault()
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user
+          console.log(user)
+          console.log('User Created')
+          router.push('/')
+        }).catch((error) => {
+          console.log(error)
+        })
     }
   }
 };

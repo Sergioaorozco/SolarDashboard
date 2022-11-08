@@ -58,7 +58,7 @@
 </template>
 <script>
 // Configuration
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword  } from 'firebase/auth'
 import firebase from 'firebase/compat/app'
 import router from '../router/index.js'
 // Firebase Configuration
@@ -88,17 +88,13 @@ export default {
     EmailSignUp(e){
       const email = document.getElementById('email').value
       const password = document.getElementById('password').value
-      const firstName = document.getElementById('first_name').value
-      const lastName = document.getElementById('last_name').value
-      const phoneNumber = document.getElementById('phone').value
+      // const firstName = document.getElementById('first_name').value
+      // const lastName = document.getElementById('last_name').value
+      // const phoneNumber = document.getElementById('phone').value
       e.preventDefault()
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           const user = userCredential.user
-          user.updateProfile({
-            displayName: document.getElementById('first_name').value,
-            phoneNumber= document.getElementById('phone').value
-          })
           console.log('User Created')
           router.push('/')
         }).catch((error) => {

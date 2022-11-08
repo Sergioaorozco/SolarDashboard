@@ -57,7 +57,7 @@
 </template>
 <script>
 // Configuration
-import { getAuth, signInWithPopup, GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword  } from 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword  } from 'firebase/auth'
 import firebase from 'firebase/compat/app'
 import router from '../router/index.js'
 // Firebase Configuration
@@ -75,8 +75,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
 
 // Div Selectors
-const providerGithub = new GithubAuthProvider()
-const providerGoogle = new GoogleAuthProvider()
 const auth = getAuth()
 export default {
   data() {

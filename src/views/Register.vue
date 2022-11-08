@@ -58,7 +58,7 @@
 </template>
 <script>
 // Configuration
-import { getAuth, createUserWithEmailAndPassword  } from 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import firebase from 'firebase/compat/app'
 import router from '../router/index.js'
 // Firebase Configuration
@@ -91,14 +91,14 @@ export default {
       const firstName = document.getElementById('first_name').value
       const lastName = document.getElementById('last_name').value
       const phoneNumber = document.getElementById('phone').value
-      const updateUser = auth.currentUser
       e.preventDefault()
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           const user = userCredential.user
-          updateUser.displayName= `${firstName} + ${lastName}`
-          updateUser.phoneNumber= phoneNumber
-          console.log(user)
+          user.updateProfile({
+            displayName: document.getElementById('first_name').value,
+            phoneNumber= document.getElementById('phone').value
+          })
           console.log('User Created')
           router.push('/')
         }).catch((error) => {

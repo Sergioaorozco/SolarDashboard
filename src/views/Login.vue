@@ -2,12 +2,12 @@
   <div class="login_Bg">
       <!-- Form side -->
       <div
-        class="w-full py-5 flex flex-col gap-3 justify-evenly items-center h-screen"
+        class="w-full flex flex-col gap-3 justify-evenly items-center h-screen"
       >
         <h1 class="px-6 text-slate-100 self-center font-bold text-3xl">SolarBoard</h1>
       <!-- Login -->
       <div class="sm:w-2/4 lg:w-4/12 w-4/5 flex justify-center flex-col">
-        <div class="shadow-lg px-6 w-full rounded-lg self-center bg-white flex flex-col gap-3 mb-3">
+        <div class="shadow-lg px-6 py-5 lg:py-10 w-full rounded-lg self-center bg-white flex flex-col gap-3 mb-3">
             <h1 class="text-3xl text-center text-slate-800 font-bold mb-3">Welcome Back</h1>
             <div class="flex flex-col lg:flex-row gap-2 w-full">
               <a class="flex w-full lg:w-1/2" id="googleLogin" @click="GoogleSignIn">

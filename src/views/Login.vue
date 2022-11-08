@@ -124,98 +124,83 @@ export default {
   },
   methods: {
     GoogleSignIn() {
-      setPersistence(auth, inMemoryPersistence )
-      .then(() => {
-        signInWithPopup(auth, providerGoogle)
-          .then((result) => {
-            const user = result.user
-            if(user){
-              this.authData = result
-              this.$emit('userData', this.authData)
-              router.push({
-                name:'home',
-                params: {userInfo:(user.uid)},
-                },
-            )}
-          }).catch((error) => {
-            console.log(error)
-            this.ErrorMessage = true
-            switch(error.code) {
-              case "auth/account-exists-with-different-credential":
-                this.errMsg = "Invalid Email.";
-                break;
-              case "auth/user-not-found":
-                this.errMsg = "You're not authorized to access this application. Please Sign Up.";
-                break;
-            }
-          })
-      }).catch((error) =>{
-        console.log(error)
-      })
+      signInWithPopup(auth, providerGoogle)
+        .then((result) => {
+          const user = result.user
+          if(user){
+            this.authData = result
+            this.$emit('userData', this.authData)
+            router.push({
+              name:'home',
+              params: {userInfo:(user.uid)},
+              },
+          )}
+        }).catch((error) => {
+          console.log(error)
+          this.ErrorMessage = true
+          switch(error.code) {
+            case "auth/account-exists-with-different-credential":
+              this.errMsg = "Invalid Email.";
+              break;
+            case "auth/user-not-found":
+              this.errMsg = "You're not authorized to access this application. Please Sign Up.";
+              break;
+          }
+        })
     },
     GithubSignIn() {
-      setPersistence(auth, inMemoryPersistence )
-      .then(() => {
-        signInWithPopup(auth, providerGithub)
-          .then((result) => {
-            const user = result.user
-            if(user){
-              this.authData = result
-              this.$emit('userData', this.authData)
-              router.push({
-                name:'home',
-                params: {userInfo:(user.uid)},
-                },
-          )}
-          }).catch((error) => {
-            this.ErrorMessage = true
-            console.log(error)
-            switch(error.code) {
-              case "auth/account-exists-with-different-credential":
-                this.errMsg = "Invalid Email.";
-                break;
-              case "auth/user-not-found":
-                this.errMsg = "You're not authorized to access this application. Please Sign Up.";
-                break;
-            }
-          })
-      }).catch((error) => {
-        console.log(error)
-      })
+      signInWithPopup(auth, providerGithub)
+        .then((result) => {
+          const user = result.user
+          if(user){
+            this.authData = result
+            this.$emit('userData', this.authData)
+            router.push({
+              name:'home',
+              params: {userInfo:(user.uid)},
+              },
+        )}
+        }).catch((error) => {
+          this.ErrorMessage = true
+          console.log(error)
+          switch(error.code) {
+            case "auth/account-exists-with-different-credential":
+              this.errMsg = "Invalid Email.";
+              break;
+            case "auth/user-not-found":
+              this.errMsg = "You're not authorized to access this application. Please Sign Up.";
+              break;
+          }
+        })
     },
     EmailSign(e){
       const email = document.getElementById('clientEmail').value
       const password = document.getElementById('clientPass').value
       e.preventDefault()
-        setPersistence(auth, inMemoryPersistence )
-        .then(() => {
-          signInWithEmailAndPassword(auth, email, password)
-            .then((result) => {
-              const user = result.user
-              this.authData = result
-              this.$emit('userData', this.authData)
-              router.push({
-                name:'home',
-                params: {userInfo:(user.uid)},
-              })
-            }).catch((error) => {
-              this.ErrorMessage = true
-              console.log(error)
-              switch (error.code) {
-                case "auth/invalid-email":
-                  this.errMsg = "Invalid Email.";
-                  break;
-                case "auth/user-not-found":
-                  this.errMsg = "No account with that e-mail was found.";
-                  break;
-                case "auth/wrong-password":
-                  this.errMsg = "Incorrect Password.";
-                  break;
-            }
+        signInWithEmailAndPassword(auth, email, password)
+          .then((result) => {
+            const user = result.user
+            this.authData = result
+            this.$emit('userData', this.authData)
+            router.push({
+              name:'home',
+              params: {userInfo:(user.uid)},
             })
-        }).catch((error) => {
-          console.log(error)
-        })
+          }).catch((error) => {
+            this.ErrorMessage = true
+            console.log(error)
+            switch (error.code) {
+              case "auth/invalid-email":
+                this.errMsg = "Invalid Email.";
+                break;
+              case "auth/user-not-found":
+                this.errMsg = "No account with that e-mail was found.";
+                break;
+              case "auth/wrong-password":
+                this.errMsg = "Incorrect Password.";
+                break;
+          }
+          })
     }
   }
 };

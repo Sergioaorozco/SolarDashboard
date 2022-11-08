@@ -127,7 +127,6 @@ export default {
       signInWithPopup(auth, providerGoogle)
         .then((result) => {
           const user = result.user
-          console.log(user)
           if(user){
             this.authData = result
             this.$emit('userData', this.authData)
@@ -152,7 +151,8 @@ export default {
     GithubSignIn() {
       signInWithPopup(auth, providerGithub)
         .then((result) => {
-          if(result.user){
+          const user = result.user
+          if(user){
             this.authData = result
             this.$emit('userData', this.authData)
             router.push({

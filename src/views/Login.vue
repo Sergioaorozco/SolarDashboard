@@ -1,8 +1,8 @@
 <template>
-  <div class="login_Bg">
+  <div class="loginView flex place-items-center gap-7">
       <!-- Form side -->
       <div
-        class="w-full flex flex-col gap-3 justify-evenly items-center h-screen"
+        class="w-full flex flex-col gap-3 justify-evenly items-center"
       >
         <h1 class="px-6 text-slate-100 self-center font-bold text-3xl">SolarBoard</h1>
       <!-- Login -->
@@ -206,12 +206,6 @@ export default {
 };
 </script>
 <style scoped>
-.login_Bg {
-  /* Image background */
-  background: url("https://www.sergiorozco.com/images/background-contact.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 .wrap {
   margin: auto;
   max-inline-size: 1125px;

@@ -12,3 +12,11 @@
   max-inline-size: 1125px;
   margin-inline-block: 5px;
 }
+
+body .loginView  {
+  /* Image background */
+  background: url("https://www.sergiorozco.com/images/background-contact.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}

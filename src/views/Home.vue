@@ -6,7 +6,7 @@
     <h1>Welcomee {{userLogged.displayName}}</h1>
     <img class="w-12 h-12 rounded-full" :src="userLogged.photoURL" alt="">
 
-    <a @click="logOut" href="">Log Out</a>
+    <p class="text-2xl" @click="logOut" >Log Out</p>
   </div>
 </template>
 <script>
@@ -22,8 +22,8 @@ export default {
   methods: {
     logOut(){
       signOut(auth).then(() => {
-        console.log('You close this session')
         router.push({name:'home'})
+        console.log('You close this session')
       }).catch((error) => {
         console.log(error)
       })

@@ -77,7 +77,7 @@
             <p class="my-3 mx-1 text-red-800" v-if="ErrorMessage">{{ errMsg }}</p>
           </form>
         </div>
-        <a class="text-white  justify-center self-center underline" href="">You don't have an account? Sign Up</a>
+        <router-link to="/register" class="text-white  justify-center self-center underline" href="">Don't have an account yet? Sign Up</router-link>
       </div>
       <!-- Social Media -->
           <a target="_blank" class="text-white flex gap-2 hover:underline" href="https://github.com/Sergioaorozco/SolarDashboard">
@@ -173,7 +173,7 @@ export default {
           }
         })
     },
-    async EmailSign(e){
+    EmailSign(e){
       const email = document.getElementById('clientEmail').value
       const password = document.getElementById('clientPass').value
       e.preventDefault()

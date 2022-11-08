@@ -93,7 +93,7 @@
 </template>
 <script>
 // Configuration
-import { getAuth, signInWithPopup, GithubAuthProvider, GoogleAuthProvider, signInWithEmailAndPassword  } from 'firebase/auth'
+import { getAuth, signInWithPopup, GithubAuthProvider, GoogleAuthProvider, signInWithEmailAndPassword, setPersistence, inMemoryPersistence  } from 'firebase/auth'
 import firebase from 'firebase/compat/app'
 import router from '../router/index.js'
 // Firebase Configuration
@@ -124,83 +124,98 @@ export default {
   },
   methods: {
     GoogleSignIn() {
-      signInWithPopup(auth, providerGoogle)
-        .then((result) => {
-          const user = result.user
-          if(user){
-            this.authData = result
-            this.$emit('userData', this.authData)
-            router.push({
-              name:'home',
-              params: {userInfo:(user.uid)},
-              },
-          )}
-        }).catch((error) => {
-          console.log(error)
-          this.ErrorMessage = true
-          switch(error.code) {
-            case "auth/account-exists-with-different-credential":
-              this.errMsg = "Invalid Email.";
-              break;
-            case "auth/user-not-found":
-              this.errMsg = "You're not authorized to access this application. Please Sign Up.";
-              break;
-          }
-        })
+      setPersistence(auth, inMemoryPersistence )
+      .then((result) => {
+        signInWithPopup(auth, providerGoogle)
+          .then((result) => {
+            const user = result.user
+            if(user){
+              this.authData = result
+              this.$emit('userData', this.authData)
+              router.push({
+                name:'home',
+                params: {userInfo:(user.uid)},
+                },
+            )}
+          }).catch((error) => {
+            console.log(error)
+            this.ErrorMessage = true
+            switch(error.code) {
+              case "auth/account-exists-with-different-credential":
+                this.errMsg = "Invalid Email.";
+                break;
+              case "auth/user-not-found":
+                this.errMsg = "You're not authorized to access this application. Please Sign Up.";
+                break;
+            }
+          })
+      }).catch((error) =>{
+        console.log(error)
+      })
     },
     GithubSignIn() {
-      signInWithPopup(auth, providerGithub)
-        .then((result) => {
-          const user = result.user
-          if(user){
-            this.authData = result
-            this.$emit('userData', this.authData)
-            router.push({
-              name:'home',
-              params: {userInfo:(user.uid)},
-              },
-        )}
-        }).catch((error) => {
-          this.ErrorMessage = true
-          console.log(error)
-          switch(error.code) {
-            case "auth/account-exists-with-different-credential":
-              this.errMsg = "Invalid Email.";
-              break;
-            case "auth/user-not-found":
-              this.errMsg = "You're not authorized to access this application. Please Sign Up.";
-              break;
-          }
-        })
+      setPersistence(auth, inMemoryPersistence )
+      .then((result) => {
+        signInWithPopup(auth, providerGithub)
+          .then((result) => {
+            const user = result.user
+            if(user){
+              this.authData = result
+              this.$emit('userData', this.authData)
+              router.push({
+                name:'home',
+                params: {userInfo:(user.uid)},
+                },
+          )}
+          }).catch((error) => {
+            this.ErrorMessage = true
+            console.log(error)
+            switch(error.code) {
+              case "auth/account-exists-with-different-credential":
+                this.errMsg = "Invalid Email.";
+                break;
+              case "auth/user-not-found":
+                this.errMsg = "You're not authorized to access this application. Please Sign Up.";
+                break;
+            }
+          })
+      }).catch((error) => {
+        console.log(error)
+      })
     },
     EmailSign(e){
       const email = document.getElementById('clientEmail').value
       const password = document.getElementById('clientPass').value
       e.preventDefault()
-        signInWithEmailAndPassword(auth, email, password)
-          .then((result) => {
-            const user = result.user
-            this.authData = result
-            this.$emit('userData', this.authData)
-            router.push({
-              name:'home',
-              params: {userInfo:(user.uid)},
+        setPersistence(auth, inMemoryPersistence )
+        .then((result) => {
+          signInWithEmailAndPassword(auth, email, password)
+            .then((result) => {
+              const user = result.user
+              this.authData = result
+              this.$emit('userData', this.authData)
+              router.push({
+                name:'home',
+                params: {userInfo:(user.uid)},
+              })
+            }).catch((error) => {
+              this.ErrorMessage = true
+              console.log(error)
+              switch (error.code) {
+                case "auth/invalid-email":
+                  this.errMsg = "Invalid Email.";
+                  break;
+                case "auth/user-not-found":
+                  this.errMsg = "No account with that e-mail was found.";
+                  break;
+                case "auth/wrong-password":
+                  this.errMsg = "Incorrect Password.";
+                  break;
+            }
             })
-          }).catch((error) => {
-            this.ErrorMessage = true
-            console.log(error)
-            switch (error.code) {
-              case "auth/invalid-email":
-                this.errMsg = "Invalid Email.";
-                break;
-              case "auth/user-not-found":
-                this.errMsg = "No account with that e-mail was found.";
-                break;
-              case "auth/wrong-password":
-                this.errMsg = "Incorrect Password.";
-                break;
-          }
-          })
+        }).catch((error) => {
+          console.log(error)
+        })
     }
   }
 };

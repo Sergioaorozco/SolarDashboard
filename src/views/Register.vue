@@ -38,7 +38,7 @@
                     </div>
                     <label for="remember" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-400">I agree with the <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a>.</label>
                 </div>
-                <button @submit="EmailSign" type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create Account</button>
+                <button @submit="EmailSignUp" type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create Account</button>
             </form>
         </div>
         <router-link to="/" class="text-white  justify-center self-center underline" href="">Already have an account? Login here</router-link>
@@ -85,18 +85,15 @@ export default {
     };
   },
   methods: {
-    EmailSign(e){
+    EmailSignUp(e){
       e.preventDefault()
       const email = document.getElementById('email').value
       const password = document.getElementById('password').value
         createUserWithEmailAndPassword(auth, email, password)
           .then((result) => {
-            const user = result.user
-            this.authData = result
-            this.$emit('userData', this.authData)
+            console.log(result)
             router.push({
-              name:'home',
-              params: {userInfo:(user.uid)},
+              name:'login',
             })
           }).catch((error) => {
             this.ErrorMessage = true

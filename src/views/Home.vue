@@ -12,6 +12,7 @@
 <script>
 import { getAuth, signOut } from 'firebase/auth'
 import router from '../router/index.js'
+
 const auth = getAuth()
 export default {
   data () {

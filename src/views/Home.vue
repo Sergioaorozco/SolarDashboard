@@ -22,7 +22,7 @@ export default {
     logOut(){
       signOut(auth).then(() => {
         console.log('You close this session')
-        route.push('/')
+        router.push({name:'home'})
       }).catch((error) => {
         console.log(error)
       })

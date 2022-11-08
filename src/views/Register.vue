@@ -91,63 +91,12 @@ export default {
     };
   },
   methods: {
-    GoogleSignIn() {
-      signInWithPopup(auth, providerGoogle)
-        .then((result) => {
-          const user = result.user
-          console.log(user)
-          if(user){
-            this.authData = result
-            this.$emit('userData', this.authData)
-            router.push({
-              name:'home',
-              params: {userInfo:(user.uid)},
-              },
-          )}
-        }).catch((error) => {
-          console.log(error)
-          this.ErrorMessage = true
-          switch(error.code) {
-            case "auth/account-exists-with-different-credential":
-              this.errMsg = "Invalid Email.";
-              break;
-            case "auth/user-not-found":
-              this.errMsg = "You're not authorized to access this application. Please Sign Up.";
-              break;
-          }
-        })
-    },
-    GithubSignIn() {
-      signInWithPopup(auth, providerGithub)
-        .then((result) => {
-          if(result.user){
-            this.authData = result
-            this.$emit('userData', this.authData)
-            router.push({
-              name:'home',
-              params: {userInfo:(user.uid)},
-              },
-        )}
-        }).catch((error) => {
-          this.ErrorMessage = true
-          console.log(error)
-          switch(error.code) {
-            case "auth/account-exists-with-different-credential":
-              this.errMsg = "Invalid Email.";
-              break;
-            case "auth/user-not-found":
-              this.errMsg = "You're not authorized to access this application. Please Sign Up.";
-              break;
-          }
-        })
-    },
     EmailSign(e){
       const email = document.getElementById('email').value
-      const firstName = document.getElementById('first_name').value
-      const lastName = document.getElementById('last_name').value
-      const phone = document.getElementById('phone').value
-      const password = document.getElementById('first_nam').value
-      const password = document.getElementById('first_nam').value
+      // const firstName = document.getElementById('first_name').value
+      // const lastName = document.getElementById('last_name').value
+      // const phone = document.getElementById('phone').value
+      const password = document.getElementById('password').value
       e.preventDefault()
         createUserWithEmailAndPassword(auth, email, password)
           .then((result) => {

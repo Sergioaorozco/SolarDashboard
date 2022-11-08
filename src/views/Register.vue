@@ -86,12 +86,9 @@ export default {
   },
   methods: {
     EmailSign(e){
-      const email = document.getElementById('email').value
-      // const firstName = document.getElementById('first_name').value
-      // const lastName = document.getElementById('last_name').value
-      // const phone = document.getElementById('phone').value
-      const password = document.getElementById('password').value
       e.preventDefault()
+      const email = document.getElementById('email').value
+      const password = document.getElementById('password').value
         createUserWithEmailAndPassword(auth, email, password)
           .then((result) => {
             const user = result.user

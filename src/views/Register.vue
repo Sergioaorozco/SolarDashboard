@@ -105,8 +105,9 @@ export default {
           console.log(error)
           switch(error.code){
             case 'auth/email-already-in-use':
-            this.errMsg = "Invalid Email.";
-            break
+            this.ErrorMessage = true
+            this.errMsg = "This account arealdy exists. Please sign in.";
+            break;
           }
         })
     }

@@ -125,7 +125,7 @@ export default {
   methods: {
     GoogleSignIn() {
       setPersistence(auth, inMemoryPersistence )
-      .then((result) => {
+      .then(() => {
         signInWithPopup(auth, providerGoogle)
           .then((result) => {
             const user = result.user
@@ -155,7 +155,7 @@ export default {
     },
     GithubSignIn() {
       setPersistence(auth, inMemoryPersistence )
-      .then((result) => {
+      .then(() => {
         signInWithPopup(auth, providerGithub)
           .then((result) => {
             const user = result.user
@@ -188,7 +188,7 @@ export default {
       const password = document.getElementById('clientPass').value
       e.preventDefault()
         setPersistence(auth, inMemoryPersistence )
-        .then((result) => {
+        .then(() => {
           signInWithEmailAndPassword(auth, email, password)
             .then((result) => {
               const user = result.user

@@ -6,7 +6,7 @@
     <h1>Welcomee {{userLogged.displayName}}</h1>
     <img class="w-12 h-12 rounded-full" :src="userLogged.photoURL" alt="">
 
-    <p class="text-2xl" @click="logOut" >Log Out</p>
+    <button class="text-2xl" @click="logOut" >Log Out</button>
   </div>
 </template>
 <script>

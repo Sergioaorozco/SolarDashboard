@@ -2,7 +2,7 @@
   <div class="login_Bg">
       <!-- Form side -->
       <div
-        class="w-full py-5 flex flex-col gap-3 justify-between items-center h-screen"
+        class="w-full py-5 flex flex-col gap-3 justify-evenly items-center h-screen"
       >
         <h1 class="px-6 text-slate-100 self-center font-bold text-3xl">SolarBoard</h1>
       <!-- Login -->

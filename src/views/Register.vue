@@ -80,7 +80,8 @@ const auth = getAuth()
 export default {
   data() {
     return {
-      errMsg:null,
+      errMsg: null,
+      ErrorMessage: false
     };
   },
   methods: {

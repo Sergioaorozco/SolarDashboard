@@ -5,8 +5,8 @@
     </figure>
     <keep-alive>
       <div @userData="userInformation">
-        <h1>Welcomee {{userLogged.displayName}}</h1>
-        <img class="w-12 h-12 rounded-full" :src="userLogged.photoURL" alt="">
+        <h1>Welcomee {{userInfo.displayName}}</h1>
+        <img class="w-12 h-12 rounded-full" :src="userInfo.photoURL" alt="">
       </div>
     </keep-alive>
 

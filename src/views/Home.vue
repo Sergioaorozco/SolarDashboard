@@ -1,10 +1,12 @@
 <template>
   <div>
     <keep-alive>
-      <section class="wrapper">
+      <section class="wrapper bg-slate-400 m-auto">
         <div class="flex flex-col lg:justify-between lg:flex-row">
-          <h1 class=" font-bold text-lg">Welcome</h1>
-          <h1>{{userLogged.displayName}}</h1>
+          <div>
+            <h1 class=" font-bold text-lg">Welcome</h1>
+            <h1>{{userLogged.displayName}}</h1>
+          </div>
           <img class="w-12 h-12 rounded-full" :src="userLogged.photoURL" alt="profile image">
         </div>
       </section>

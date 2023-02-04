@@ -11,7 +11,7 @@
                 <h1>{{userLogged.displayName}}</h1>
               </div>
             </div>
-            <button class="text-xl" @click="logOut">Log Out</button>
+            <button class="text-xl underline" @click="logOut">Log Out</button>
           </div>
         </header>
       </section>

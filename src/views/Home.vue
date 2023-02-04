@@ -4,7 +4,7 @@
       <section class="bg-slate-200">
         <header class="wrapper m-auto py-2">
           <div class="flex flex-col lg:justify-between lg:flex-row">
-            <div class="flex gap-1">
+            <div class="flex gap-2">
               <img class="w-12 h-12 rounded-full" :src="userLogged.photoURL" alt="profile image">
               <div class="leading-none">
                 <h1 class=" font-bold text-lg">Welcome</h1>

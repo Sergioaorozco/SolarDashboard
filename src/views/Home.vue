@@ -7,11 +7,11 @@
             <div class="flex gap-2">
               <img class="w-12 h-12 rounded-full" :src="userLogged.photoURL" alt="profile image">
               <div class="leading-none">
-                <h1 class=" font-bold text-lg">Welcome</h1>
+                <h1 class="font-bold text-lg">Welcome</h1>
                 <h1>{{userLogged.displayName}}</h1>
               </div>
             </div>
-            <button class="text-xl underline" @click="logOut">Log Out</button>
+            <button class="text-lg hover:underline" @click="logOut">Log Out</button>
           </div>
         </header>
       </section>

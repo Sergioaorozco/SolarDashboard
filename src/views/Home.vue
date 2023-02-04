@@ -1,15 +1,11 @@
 <template>
   <div>
-    <figure>
-      <img src="" alt="">
-    </figure>
     <keep-alive>
-      <div>
+      <div class="flex flex-col lg:justify-between lg:flex-row">
         <h1>Welcome {{userLogged.displayName}}</h1>
-        <img class="w-12 h-12 rounded-full" :src="userLogged.photoURL" alt="">
+        <img class="w-12 h-12 rounded-full" :src="userLogged.photoURL" alt="profile image">
       </div>
     </keep-alive>
-
     <button class="text-2xl" @click="logOut" >Log Out</button>
   </div>
 </template>

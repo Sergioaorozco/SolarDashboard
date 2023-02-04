@@ -4,7 +4,7 @@
       <img src="" alt="">
     </figure>
     <keep-alive>
-      <div>
+      <div @userData="userInformation">
         <h1>Welcomee {{userLogged.displayName}}</h1>
         <img class="w-12 h-12 rounded-full" :src="userLogged.photoURL" alt="">
       </div>
@@ -21,7 +21,8 @@ const auth = getAuth()
 export default {
   data () {
     return {
-      userInfo:this.$route.params.userInfo
+      // userInfo:this.$route.params.userInfo
+      userInfo:{}
     }
   },
   methods: {
@@ -32,6 +33,10 @@ export default {
       }).catch((error) => {
         console.log(error)
       })
+    },
+    userInformation(value) {
+      this.userInfo = value;
+      console.log(value);
     }
   },
   props: {

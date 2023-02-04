@@ -3,12 +3,12 @@
 export default {
   data() {
     return {
-      userInfo : {}
+      userInfo: {} 
     }
   },
   methods: {
     userInformation(value) {
-      this.userInfo = value.target.user;
+      this.userInfo = value;
       console.log(value);
     }
   }

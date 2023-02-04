@@ -9,6 +9,10 @@ export default {
   methods: {
     userData(result){
       this.userInfo = result.user
+    },
+    userInformation(value) {
+      this.userInfo = value;
+      console.log(value, this.userInfo);
     }
   }
 }
@@ -16,7 +20,7 @@ export default {
 
 <template>
   <div>
-    <router-view :user-logged="userInfo" @user-data="userData"/>
+    <router-view @userData="userInformation" :user-logged="userInfo" @user-data="userData"/>
   </div>
 </template>
 

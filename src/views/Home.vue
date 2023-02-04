@@ -4,9 +4,9 @@
       <img src="" alt="">
     </figure>
     <keep-alive>
-      <div @userData="userInformation">
-        <h1>Welcomee {{userInfo.displayName}}</h1>
-        <img class="w-12 h-12 rounded-full" :src="userInfo.photoURL" alt="">
+      <div>
+        <h1>Welcomee {{userLogged.displayName}}</h1>
+        <img class="w-12 h-12 rounded-full" :src="userLogged.photoURL" alt="">
       </div>
     </keep-alive>
 
@@ -33,10 +33,6 @@ export default {
       }).catch((error) => {
         console.log(error)
       })
-    },
-    userInformation(value) {
-      this.userInfo = value;
-      console.log(value);
     }
   },
   props: {

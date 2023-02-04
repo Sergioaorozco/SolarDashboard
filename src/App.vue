@@ -9,7 +9,7 @@ export default {
   methods: {
     userInformation(value) {
       this.userInfo = value;
-      console.log(value);
+      console.log(value[1]);
     }
   }
 }

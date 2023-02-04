@@ -3,8 +3,12 @@
     <figure>
       <img src="" alt="">
     </figure>
-    <h1>Welcomee {{userLogged.displayName}}</h1>
-    <img class="w-12 h-12 rounded-full" :src="userLogged.photoURL" alt="">
+    <keep-alive>
+      <div>
+        <h1>Welcomee {{userLogged.displayName}}</h1>
+        <img class="w-12 h-12 rounded-full" :src="userLogged.photoURL" alt="">
+      </div>
+    </keep-alive>
 
     <button class="text-2xl" @click="logOut" >Log Out</button>
   </div>

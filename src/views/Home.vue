@@ -1,10 +1,13 @@
 <template>
   <div>
     <keep-alive>
-      <div class="flex flex-col lg:justify-between lg:flex-row">
-        <h1>Welcome {{userLogged.displayName}}</h1>
-        <img class="w-12 h-12 rounded-full" :src="userLogged.photoURL" alt="profile image">
-      </div>
+      <section class="wrapper">
+        <div class="flex flex-col lg:justify-between lg:flex-row">
+          <h1 class=" font-bold text-lg">Welcome</h1>
+          <h1>{{userLogged.displayName}}</h1>
+          <img class="w-12 h-12 rounded-full" :src="userLogged.photoURL" alt="profile image">
+        </div>
+      </section>
     </keep-alive>
     <button class="text-2xl" @click="logOut" >Log Out</button>
   </div>
@@ -38,3 +41,9 @@ export default {
 
 }
 </script>
+
+<style scoped>
+.wrapper {
+  max-inline-size: 1125px;
+}
+</style>

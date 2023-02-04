@@ -10,6 +10,7 @@ export default {
     userInformation(value) {
       this.userInfo = value;
       console.log(value);
+      console.log(value.user);
     }
   }
 }

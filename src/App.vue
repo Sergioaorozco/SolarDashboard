@@ -3,13 +3,12 @@
 export default {
   data() {
     return {
-      userInfo: {} 
+      userInfo: null
     }
   },
   methods: {
     userInformation(value) {
       this.userInfo = value.user;
-      console.log(value);
       console.log(value.user);
     }
   }

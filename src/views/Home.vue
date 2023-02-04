@@ -5,7 +5,7 @@
     </figure>
     <keep-alive>
       <div>
-        <h1>Welcomee {{userLogged.displayName}}</h1>
+        <h1>Welcome {{userLogged.displayName}}</h1>
         <img class="w-12 h-12 rounded-full" :src="userLogged.photoURL" alt="">
       </div>
     </keep-alive>

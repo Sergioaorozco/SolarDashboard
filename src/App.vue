@@ -3,16 +3,13 @@
 export default {
   data() {
     return {
-      userInfo : null
+      userInfo : {}
     }
   },
   methods: {
-    userData(result){
-      this.userInfo = result.user
-    },
     userInformation(value) {
-      this.userInfo = value;
-      console.log(value, this.userInfo);
+      this.userInfo = value.target.user;
+      console.log(this.userInfo);
     }
   }
 }
@@ -20,7 +17,7 @@ export default {
 
 <template>
   <div>
-    <router-view @userData="userInformation" :user-logged="userInfo" @user-data="userData"/>
+    <router-view @userData="userInformation" :user-logged="userInfo"/>
   </div>
 </template>
 

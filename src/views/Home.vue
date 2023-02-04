@@ -1,17 +1,21 @@
 <template>
   <div>
     <keep-alive>
-      <section class="wrapper bg-slate-400 m-auto">
-        <div class="flex flex-col lg:justify-between lg:flex-row">
-          <div>
-            <h1 class=" font-bold text-lg">Welcome</h1>
-            <h1>{{userLogged.displayName}}</h1>
+      <section class="bg-slate-200">
+        <header class="wrapper m-auto">
+          <div class="flex flex-col lg:justify-between lg:flex-row">
+            <div>
+              <img class="w-12 h-12 rounded-full" :src="userLogged.photoURL" alt="profile image">
+              <div>
+                <h1 class=" font-bold text-lg">Welcome</h1>
+                <h1>{{userLogged.displayName}}</h1>
+              </div>
+            </div>
+            <button class="text-2xl" @click="logOut" >Log Out</button>
           </div>
-          <img class="w-12 h-12 rounded-full" :src="userLogged.photoURL" alt="profile image">
-        </div>
+        </header>
       </section>
     </keep-alive>
-    <button class="text-2xl" @click="logOut" >Log Out</button>
   </div>
 </template>
 <script>

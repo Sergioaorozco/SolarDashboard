@@ -212,6 +212,6 @@ export default {
 <style scoped>
 .wrap {
   margin: auto;
-  max-inline-size: 1125px;
+  max-inline-size: 90%;
 }
 </style>

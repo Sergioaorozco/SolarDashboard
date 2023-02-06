@@ -26,7 +26,6 @@ const auth = getAuth()
 export default {
   data () {
     return {
-      // userInfo:this.$route.params.userInfo
       userInfo:{}
     }
   },

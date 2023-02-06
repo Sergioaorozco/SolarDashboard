@@ -161,7 +161,7 @@ export default {
             this.$emit('userData', this.authData)
             router.push({
               name:'home',
-              params: {userInfo:(user.uid)},
+              // params: {userInfo:(user.uid)},
               },
         )}
         }).catch((error) => {

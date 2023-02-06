@@ -124,29 +124,33 @@ export default {
   },
   methods: {
     GoogleSignIn() {
-      signInWithPopup(auth, providerGoogle)
-        .then((result) => {
-          const user = result.user
-          if(user){
-            this.authData = result
-            this.$emit('userData', this.authData)
-            router.push({
-              name:'home',
-              params: {userInfo:(user.uid)},
-              },
-          )}
-        }).catch((error) => {
-          console.log(error)
-          this.ErrorMessage = true
-          switch(error.code) {
-            case "auth/account-exists-with-different-credential":
-              this.errMsg = "Invalid Email.";
-              break;
-            case "auth/user-not-found":
-              this.errMsg = "You're not authorized to access this application. Please Sign Up.";
-              break;
-          }
+      setPersistence(auth, browserSessionPersistence) 
+        .then((success)=> {
+          console.log(success)
+          return signInWithPopup(auth, providerGoogle)
+          .then((result) => {
+            const user = result.user
+            if(user){
+              this.authData = result
+              this.$emit('userData', this.authData)
+              router.push({
+                name:'home',
+                params: {userInfo:(user.uid)},
+                },
+            )}
         })
+        }).catch((error) => {
+            console.log(error)
+            this.ErrorMessage = true
+            switch(error.code) {
+              case "auth/account-exists-with-different-credential":
+                this.errMsg = "Invalid Email.";
+                break;
+              case "auth/user-not-found":
+                this.errMsg = "You're not authorized to access this application. Please Sign Up.";
+                break;
+            }
+          })
     },
     GithubSignIn() {
       signInWithPopup(auth, providerGithub)

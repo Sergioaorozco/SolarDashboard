@@ -34,7 +34,6 @@ export default {
     logOut(){
       signOut(auth).then(() => {
         router.push({name:'login'})
-        console.log('You close this session')
       }).catch((error) => {
         console.log(error)
       })

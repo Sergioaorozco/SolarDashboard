@@ -93,7 +93,7 @@
 </template>
 <script>
 // Configuration
-import { getAuth, signInWithPopup, GithubAuthProvider, GoogleAuthProvider, signInWithEmailAndPassword, setPersistence, inMemoryPersistence  } from 'firebase/auth'
+import { getAuth, signInWithPopup, GithubAuthProvider, GoogleAuthProvider, signInWithEmailAndPassword, setPersistence, browserLocalPersistence  } from 'firebase/auth'
 import firebase from 'firebase/compat/app'
 import router from '../router/index.js'
 // Firebase Configuration
@@ -124,8 +124,8 @@ export default {
   },
   methods: {
     GoogleSignIn() {
-      setPersistence(auth, browserSessionPersistence) 
-        .then((success)=> {
+      setPersistence(auth, browserLocalPersistence) 
+        .then((success) => {
           console.log(success)
           return signInWithPopup(auth, providerGoogle)
           .then((result) => {

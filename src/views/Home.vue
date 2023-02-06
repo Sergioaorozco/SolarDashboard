@@ -48,6 +48,6 @@ export default {
 
 <style scoped>
 .wrapper {
-  max-inline-size: 1125px;
+  max-inline-size: 90%;
 }
 </style>

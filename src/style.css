@@ -14,6 +14,11 @@
   margin-inline: 5px;
 }
 
+.p-tooltip.p-component.p-tooltip-left { 
+  font-size: 0.8em !important;
+  max-width: 15em !important;
+}
+
 body .loginView  {
   /* Image background */
   background: url("https://www.sergiorozco.com/images/background-contact.jpg");

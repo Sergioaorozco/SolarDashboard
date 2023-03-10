@@ -1,11 +1,11 @@
 <template>
   <div>
     <keep-alive>
-      <section class="bg-slate-200">
+      <section class="bg-white border-b border-slate-200">
         <header class="wrapper m-auto py-2">
           <div class="flex justify-between flex-row">
-            <div class="flex gap-2">
-              <img class="w-12 h-12 rounded-full" :src="userLogged.photoURL" alt="profile image">
+            <div class="flex gap-2 items-center">
+              <img class="w-12 h-12 rounded-full" :src="userLogged.photoURL || defaultImg" alt="profile image">
               <div class="leading-none">
                 <h1 class="font-bold text-lg">Welcome</h1>
                 <h1>{{userLogged.displayName}}</h1>
@@ -26,6 +26,7 @@ const auth = getAuth()
 export default {
   data () {
     return {
+      defaultImg: '../defaultimage.svg',
       userInfo:{}
     }
   },

@@ -29,7 +29,7 @@
         <p class="text-slate-600 text-2xl font-bold">Latest Tasks</p>
         <figure>
           <h2>{{userLogged.displayName}}</h2>
-          <img class="w-12 h-12 rounded-full" :src="userLogged.photoURL || defaultImg" alt="profile image">
+          <img :v-tooltip="userLogged.displayName" class="w-12 h-12 rounded-full" :src="userLogged.photoURL || defaultImg" alt="profile image">
         </figure>
       </header>
     </section>

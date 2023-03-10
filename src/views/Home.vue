@@ -1,21 +1,38 @@
 <template>
-  <div>
-    <keep-alive>
-      <section class="bg-white border-b border-slate-200">
-        <header class="wrapper m-auto py-2">
-          <div class="flex justify-between flex-row">
-            <div class="flex gap-2 items-center">
-              <img class="w-12 h-12 rounded-full" :src="userLogged.photoURL || defaultImg" alt="profile image">
-              <div class="leading-none">
-                <h1 class="font-bold text-lg">Welcome</h1>
-                <h1>{{userLogged.displayName}}</h1>
-              </div>
-            </div>
-            <button class="text-lg hover:underline" @click="logOut">Log Out</button>
+  <div class="flex items-start">
+    <aside class="w-1/6 h-screen bg-slate-50 border-r border-slate-100 pt-3 pb-10 px-10">
+      <div class="flex justify-between flex-col h-full">
+        <nav>
+          <figure class="flex items-center py-2 mb-20">
+            <img class="w-10 mr-2" src="../../vite.svg" alt="">
+            <p class="text-2xl font-bold text-slate-700 my-4">VisualSolar</p>
+          </figure>
+          <div class="flex flex-col gap-4">
+            <a href="#" class="hover:bg-slate-100 px-2 py-2 rounded-lg">Dashboard</a>
+            <a href="#" class="hover:bg-slate-100 px-2 py-2 rounded-lg">Users</a>
+            <a href="#" class="hover:bg-slate-100 px-2 py-2 rounded-lg">Accounts</a>
           </div>
-        </header>
-      </section>
-    </keep-alive>
+        </nav>
+        <div class="flex flex-col">
+          <div class="border-b border-slate-200 my-3"></div>
+          <a href="#" class="hover:bg-slate-100 px-2 py-2 rounded-lg text-sm" @click="logOut">
+            <figure class="flex items-center">
+              <img class="mr-2" src="../../icons/logout.svg">
+              <p>Logout</p>
+            </figure>
+          </a>
+        </div>
+      </div>
+    </aside>
+    <section class="pl-10 pr-8 py-6 w-full">
+      <header class="flex justify-between items-center">
+        <p class="text-slate-600 text-2xl font-bold">Latest Tasks</p>
+        <figure>
+          <h2>{{userLogged.displayName}}</h2>
+          <img class="w-12 h-12 rounded-full" :src="userLogged.photoURL || defaultImg" alt="profile image">
+        </figure>
+      </header>
+    </section>
   </div>
 </template>
 <script>
@@ -49,6 +66,6 @@ export default {
 
 <style scoped>
 .wrapper {
-  max-inline-size: 90%;
+  padding-inline: 3em;
 }
 </style>

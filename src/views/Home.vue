@@ -4,7 +4,7 @@
       <div class="flex justify-between flex-col h-full">
         <nav>
           <figure class="flex items-center py-2 mb-20">
-            <img class="w-10 mr-2" src="../../vite.svg" alt="">
+            <img class="w-10 mr-2" src="(../vite.svg)" alt="">
             <p class="text-2xl font-bold text-slate-700 my-4">VisualSolar</p>
           </figure>
           <div class="flex flex-col gap-4">
@@ -17,7 +17,7 @@
           <div class="border-b border-slate-200 my-3"></div>
           <a href="#" class="hover:bg-slate-100 px-2 py-2 rounded-lg text-sm" @click="logOut">
             <figure class="flex items-center">
-              <img class="mr-2" src="../../icons/logout.svg">
+              <img class="mr-2" src="(../icons/logout.svg)">
               <p>Logout</p>
             </figure>
           </a>

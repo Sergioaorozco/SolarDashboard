@@ -21,6 +21,12 @@ const routes = [
     component: Home,
     props: true
   },
+  {
+    path:'/home/dashboard',
+    name:'home',
+    component: Home,
+    props: true
+  },
 ]
 
 const router = createRouter({

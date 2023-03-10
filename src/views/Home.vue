@@ -15,10 +15,10 @@
         </nav>
         <div class="flex flex-col">
           <div class="border-b border-slate-200 my-3"></div>
-          <a href="#" class="hover:bg-slate-100 px-2 py-2 rounded-lg text-sm" @click="logOut">
+          <a href="#" class="hover:bg-red-200 bg-red-100 px-2 py-2 rounded-lg text-sm" @click="logOut">
             <figure class="flex items-center">
               <img class="mr-2" src="/icons/logout.svg">
-              <p>Logout</p>
+              <p class="text-red-700 font-semibold">Logout</p>
             </figure>
           </a>
         </div>
@@ -31,12 +31,16 @@
           <img v-tooltip.left="userLogged.displayName" class="w-12 h-12 rounded-full" :src="userLogged.photoURL || defaultImg" alt="profile image">
         </figure>
       </header>
+            <router-view></router-view>
+            <dashboard/>
+
     </section>
   </div>
 </template>
 <script>
 import { getAuth, signOut } from 'firebase/auth'
 import router from '../router/index.js'
+import dashboard from '../views/Dashboard.vue'
 
 const auth = getAuth()
 export default {
@@ -46,6 +50,7 @@ export default {
       userInfo:{}
     }
   },
+  components: {dashboard},
   methods: {
     logOut(){
       signOut(auth).then(() => {

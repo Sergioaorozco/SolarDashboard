@@ -64,7 +64,7 @@ export default {
 </script>
 
 <style scoped>
-:deep().p-tooltip.p-component { font-size: 10px; }
+:deep().p-tooltip.p-component { font-size: 0.8em !important;}
 .wrapper {
   padding-inline: 3em;
 }

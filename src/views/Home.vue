@@ -28,7 +28,7 @@
       <header class="flex justify-between items-center">
         <p class="text-slate-600 text-2xl font-bold">Latest Tasks</p>
         <figure>
-          <img v-tooltip.left="userLogged.displayName" class="w-12 h-12 rounded-full text-sm" :src="userLogged.photoURL || defaultImg" alt="profile image">
+          <img v-tooltip.left="userLogged.displayName" class="w-12 h-12 rounded-full" :src="userLogged.photoURL || defaultImg" alt="profile image">
         </figure>
       </header>
     </section>
@@ -64,6 +64,7 @@ export default {
 </script>
 
 <style scoped>
+:deep().p-tooltip.p-component { font-size: 10px; }
 .wrapper {
   padding-inline: 3em;
 }

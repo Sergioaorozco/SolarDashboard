@@ -184,6 +184,7 @@ export default {
         signInWithEmailAndPassword(auth, email, password)
           .then((result) => {
             const user = result.user
+            console.log(user)
             this.authData = result
             this.$emit('userData', this.authData)
             router.push({

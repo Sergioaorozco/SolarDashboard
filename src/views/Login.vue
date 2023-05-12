@@ -96,6 +96,9 @@
 import { getAuth, signInWithPopup, GithubAuthProvider, GoogleAuthProvider, signInWithEmailAndPassword, setPersistence, browserLocalPersistence  } from 'firebase/auth'
 import firebase from 'firebase/compat/app'
 import router from '../router/index.js'
+import { useUserStore } from '../stores/userStore'
+
+
 // Firebase Configuration
 const firebaseConfig = {
   apiKey: 'AIzaSyDVkwDplSu8sXq_rIa-Wl9HVGni5-QK6l0',
@@ -122,90 +125,20 @@ export default {
       authData: null
     };
   },
+  setup() {
+    const userStore = useUserStore()
+    return {userStore}
+  },
   methods: {
     GoogleSignIn() {
-      setPersistence(auth, browserLocalPersistence) 
-        .then((success) => {
-          console.log(success)
-          return signInWithPopup(auth, providerGoogle)
-          .then((result) => {
-            const user = result.user
-            if(user){
-              this.authData = result
-              this.$emit('userData', this.authData)
-              router.push({
-                name:'home',
-                params: {userInfo:(user.uid)},
-                },
-            )}
-        })
-        }).catch((error) => {
-            console.log(error)
-            this.ErrorMessage = true
-            switch(error.code) {
-              case "auth/account-exists-with-different-credential":
-                this.errMsg = "Invalid Email.";
-                break;
-              case "auth/user-not-found":
-                this.errMsg = "You're not authorized to access this application. Please Sign Up.";
-                break;
-            }
-          })
+      this.userStore.GoogleSignIn()
     },
     GithubSignIn() {
-      signInWithPopup(auth, providerGithub)
-        .then((result) => {
-          const user = result.user
-          if(user){
-            this.authData = result
-            this.$emit('userData', this.authData)
-            router.push({
-              name:'home',
-              params: {userInfo:(user.uid)},
-              },
-        )}
-        }).catch((error) => {
-          this.ErrorMessage = true
-          console.log(error)
-          switch(error.code) {
-            case "auth/account-exists-with-different-credential":
-              this.errMsg = "Invalid Email.";
-              break;
-            case "auth/user-not-found":
-              this.errMsg = "You're not authorized to access this application. Please Sign Up.";
-              break;
-          }
-        })
+      this.userStore.GithubSignIn()
+
     },
     EmailSign(e){
-      const email = document.getElementById('clientEmail').value
-      const password = document.getElementById('clientPass').value
-      e.preventDefault()
-        signInWithEmailAndPassword(auth, email, password)
-          .then((result) => {
-            const user = result.user
-            console.log(user)
-            this.authData = result
-            this.$emit('userData', this.authData)
-            router.push({
-              name:'home',
-              params: {userInfo:(user.uid)},
-            })
-          }).catch((error) => {
-            this.ErrorMessage = true
-            console.log(error)
-            switch (error.code) {
-              case "auth/invalid-email":
-                this.errMsg = "Invalid Email.";
-                break;
-              case "auth/user-not-found":
-                this.errMsg = "No account with that e-mail was found.";
-                break;
-              case "auth/wrong-password":
-                this.errMsg = "Incorrect Password.";
-                break;
-          }
-          })
+      this.userStore.EmailSign()
     }
   }
 };

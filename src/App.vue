@@ -1,4 +1,6 @@
 <script>
+import router from './router/index.js'
+
 
 export default {
   data() {
@@ -17,7 +19,7 @@ export default {
 
 <template>
   <div>
-    <router-view @userData="userInformation" :user-logged="userInfo"/>
+    <router-view />
   </div>
 </template>
 

@@ -31,46 +31,36 @@
           <img v-tooltip.left="userLogged.displayName" class="w-12 h-12 rounded-full" :src="userLogged.photoURL || defaultImg" alt="profile image">
         </figure>
       </header>
-            <router-view></router-view>
-            <dashboard/>
+        <router-view></router-view>
+        <dashboard/>
 
     </section>
   </div>
 </template>
 <script>
-import { getAuth, signOut } from 'firebase/auth'
-import router from '../router/index.js'
+import router from '../router'
 import dashboard from '../views/Dashboard.vue'
 import { useUserStore } from '../stores/userStore'
 
 
-const auth = getAuth()
 export default {
-  data () {
-    return {
-      defaultImg: '../defaultimage.svg',
-      userInfo:{}
-    }
-  },
   setup(){
     const userStore = useUserStore()
     return {userStore}
   },
+  data () {
+    return {
+      defaultImg: '../defaultimage.svg',
+      userInfo:{},
+      userLogged: this.userStore.$state.user
+    }
+  },
   components: {dashboard},
   methods: {
     logOut(){
-      signOut(auth).then(() => {
-        router.push({name:'login'})
-      }).catch((error) => {
-        console.log(error)
-      })
+      this.userStore.logOut();
     }
   },
-  props: {
-    userLogged: {}
-  },
-
-
 }
 </script>
 

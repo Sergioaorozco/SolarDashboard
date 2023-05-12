@@ -1,4 +1,3 @@
-import { useUserStore } from './stores/userStore'
 import { createPinia } from 'pinia'
 import { createApp } from 'vue'
 import './style.css'

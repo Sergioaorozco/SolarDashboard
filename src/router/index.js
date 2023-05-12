@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import { useUserStore } from '../stores/userStore'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Home from '../views/Home.vue'
+import Dashboard from '../views/Dashboard.vue'
 
 
 const routes = [
@@ -24,8 +24,8 @@ const routes = [
   },
   {
     path:'/home/dashboard',
-    name:'home',
-    component: Home,
+    name:'dashboard',
+    component: Dashboard,
     props: true
   },
 ]
@@ -35,9 +35,5 @@ const router = createRouter({
   routes
 })
 
-
-router.beforeEach(() => {
-  const main = useUserStore()
-})
 
 export default router

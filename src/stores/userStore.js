@@ -1,9 +1,8 @@
 import { defineStore } from 'pinia';
 // Configuration
-import { getAuth, signInWithPopup, GithubAuthProvider, GoogleAuthProvider, signInWithEmailAndPassword, setPersistence, browserLocalPersistence  } from 'firebase/auth'
+import { getAuth, signInWithPopup, GithubAuthProvider, GoogleAuthProvider, signInWithEmailAndPassword, setPersistence, browserLocalPersistence, signOut  } from 'firebase/auth'
 import firebase from 'firebase/compat/app'
-import { useRouter } from 'vue-router';
-import router from '../router/index.js'
+import router from '../router';
 // Firebase Configuration
 const firebaseConfig = {
   apiKey: 'AIzaSyDVkwDplSu8sXq_rIa-Wl9HVGni5-QK6l0',
@@ -35,13 +34,16 @@ export const useUserStore = defineStore( "userStore", {
   actions: {
     async GoogleSignIn() {
       try {
+        await setPersistence(auth, browserLocalPersistence);
         const result = await signInWithPopup(auth, providerGoogle)
         this.user = result.user
-        const router = useRouter()
-        router.push({
-          name:'home',
-          params: {userInfo:(user.uid)},
-        })
+        let uid = this.user.uid
+        if(this.user){
+          router.push({
+            name:'home',
+            params: {userInfo:(uid)},
+          })
+        }
       } catch (error) {
         this.ErrorMessage = true
         switch(error.code) {
@@ -56,13 +58,15 @@ export const useUserStore = defineStore( "userStore", {
     },
     async GithubSignIn() {
       try {
+        await setPersistence(auth, browserLocalPersistence);
         const result = await signInWithPopup(auth, providerGithub)
         this.user = result.user
-        const router = useRouter()
-        router.push({
-          name:'home',
-          params: {userInfo:(user.uid)},
-        })
+        if(this.user){
+          router.push({
+            name:'home',
+            params: {userInfo:(uid)},
+          })
+        }
       } catch (error) {
           this.ErrorMessage = true
           console.log(error)
@@ -76,33 +80,43 @@ export const useUserStore = defineStore( "userStore", {
           }
       }
     },
-    EmailSign(e){
-      const email = document.getElementById('clientEmail').value
-      const password = document.getElementById('clientPass').value
-      e.preventDefault()
-        signInWithEmailAndPassword(auth, email, password)
-          .then((result) => {
-            this.user = result.user
-            const router = useRouter()
-            router.push({
-              name:'home',
-              params: {userInfo:(user.uid)},
-            })
-          }).catch((error) => {
-            this.ErrorMessage = true
-            console.log(error)
-            switch (error.code) {
-              case "auth/invalid-email":
-                this.error = "Invalid Email.";
-                break;
-              case "auth/user-not-found":
-                this.error = "No account with that e-mail was found.";
-                break;
-              case "auth/wrong-password":
-                this.error = "Incorrect Password.";
-                break;
-          }
+    async EmailSign(e) {
+      try {
+        e.preventDefault()
+        const email = document.getElementById('clientEmail').value
+        const password = document.getElementById('clientPass').value
+        await setPersistence(auth, browserLocalPersistence);
+        const result = await signInWithEmailAndPassword(auth, email, password)
+        this.user = result.user
+        if(this.user){
+          router.push({
+            name:'home',
+            params: {userInfo:(uid)},
           })
+        }
+      } catch(error) {
+          this.ErrorMessage = true
+          console.log(error)
+          switch (error.code) {
+            case "auth/invalid-email":
+              this.error = "Invalid Email.";
+              break;
+            case "auth/user-not-found":
+              this.error = "No account with that e-mail was found.";
+              break;
+            case "auth/wrong-password":
+              this.error = "Incorrect Password.";
+              break;
+        }
+      }
+    },
+    logOut(){
+      signOut(auth).then(() => {
+        this.user = '';
+        router.push({name:'login'})
+      }).catch((error) => {
+        console.log(error)
+      })
     }
   }
 })

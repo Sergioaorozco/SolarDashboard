@@ -41,6 +41,8 @@
 import { getAuth, signOut } from 'firebase/auth'
 import router from '../router/index.js'
 import dashboard from '../views/Dashboard.vue'
+import { useUserStore } from '../stores/userStore'
+
 
 const auth = getAuth()
 export default {
@@ -49,6 +51,10 @@ export default {
       defaultImg: '../defaultimage.svg',
       userInfo:{}
     }
+  },
+  setup(){
+    const userStore = useUserStore()
+    return {userStore}
   },
   components: {dashboard},
   methods: {

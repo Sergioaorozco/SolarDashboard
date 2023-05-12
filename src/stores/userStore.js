@@ -26,7 +26,8 @@ const auth = getAuth()
 export const useUserStore = defineStore( "userStore", {
   state: () => {
     return {
-      user: [],
+      user: null,
+      error: null
     }
   },
   actions: {
@@ -35,49 +36,44 @@ export const useUserStore = defineStore( "userStore", {
         const success = await setPersistence(auth, browserLocalPersistence)
         console.log(success)
         const result = await signInWithPopup(auth, providerGoogle)
-        const user = result.user
-        if(user){
-          this.authData = result
-          this.$emit('userData', this.authData)
+        this.user = result.user
+        if(this.user){
           router.push({
             name:'home',
             params: {userInfo:(user.uid)},
           })
         }
       } catch (error) {
-        console.log(error)
         this.ErrorMessage = true
         switch(error.code) {
           case "auth/account-exists-with-different-credential":
-            this.errMsg = "Invalid Email.";
+            this.error = "Invalid Email.";
             break;
           case "auth/user-not-found":
-            this.errMsg = "You're not authorized to access this application. Please Sign Up.";
+            this.error = "You're not authorized to access this application. Please Sign Up.";
             break;
         }
       }
     },
-    GithubSignIn() {
+    async GithubSignIn() {
       signInWithPopup(auth, providerGithub)
         .then((result) => {
-          const user = result.user
-          if(user){
-            this.authData = result
-            this.$emit('userData', this.authData)
+          this.user = result.user
+          if(this.user){
             router.push({
               name:'home',
               params: {userInfo:(user.uid)},
-              },
-        )}
+            })
+          }
         }).catch((error) => {
           this.ErrorMessage = true
           console.log(error)
           switch(error.code) {
             case "auth/account-exists-with-different-credential":
-              this.errMsg = "Invalid Email.";
+              this.error = "Invalid Email.";
               break;
             case "auth/user-not-found":
-              this.errMsg = "You're not authorized to access this application. Please Sign Up.";
+              this.error = "You're not authorized to access this application. Please Sign Up.";
               break;
           }
         })
@@ -88,10 +84,7 @@ export const useUserStore = defineStore( "userStore", {
       e.preventDefault()
         signInWithEmailAndPassword(auth, email, password)
           .then((result) => {
-            const user = result.user
-            console.log(user)
-            this.authData = result
-            this.$emit('userData', this.authData)
+            this.user = result.user
             router.push({
               name:'home',
               params: {userInfo:(user.uid)},
@@ -101,13 +94,13 @@ export const useUserStore = defineStore( "userStore", {
             console.log(error)
             switch (error.code) {
               case "auth/invalid-email":
-                this.errMsg = "Invalid Email.";
+                this.error = "Invalid Email.";
                 break;
               case "auth/user-not-found":
-                this.errMsg = "No account with that e-mail was found.";
+                this.error = "No account with that e-mail was found.";
                 break;
               case "auth/wrong-password":
-                this.errMsg = "Incorrect Password.";
+                this.error = "Incorrect Password.";
                 break;
           }
           })

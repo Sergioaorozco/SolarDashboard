@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 // Configuration
 import { getAuth, signInWithPopup, GithubAuthProvider, GoogleAuthProvider, signInWithEmailAndPassword, setPersistence, browserLocalPersistence  } from 'firebase/auth'
 import firebase from 'firebase/compat/app'
+import { useRouter } from 'vue-router';
 import router from '../router/index.js'
 // Firebase Configuration
 const firebaseConfig = {
@@ -36,6 +37,7 @@ export const useUserStore = defineStore( "userStore", {
       try {
         const result = await signInWithPopup(auth, providerGoogle)
         this.user = result.user
+        const router = useRouter()
         router.push({
           name:'home',
           params: {userInfo:(user.uid)},
@@ -56,6 +58,7 @@ export const useUserStore = defineStore( "userStore", {
       try {
         const result = await signInWithPopup(auth, providerGithub)
         this.user = result.user
+        const router = useRouter()
         router.push({
           name:'home',
           params: {userInfo:(user.uid)},
@@ -80,6 +83,7 @@ export const useUserStore = defineStore( "userStore", {
         signInWithEmailAndPassword(auth, email, password)
           .then((result) => {
             this.user = result.user
+            const router = useRouter()
             router.push({
               name:'home',
               params: {userInfo:(user.uid)},

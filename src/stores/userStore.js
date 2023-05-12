@@ -27,22 +27,19 @@ export const useUserStore = defineStore( "userStore", {
   state: () => {
     return {
       user: null,
-      error: null
+      error: null,
+      ErrorMessage: false
     }
   },
   actions: {
     async GoogleSignIn() {
       try {
-        const success = await setPersistence(auth, browserLocalPersistence)
-        console.log(success)
         const result = await signInWithPopup(auth, providerGoogle)
         this.user = result.user
-        if(this.user){
-          router.push({
-            name:'home',
-            params: {userInfo:(user.uid)},
-          })
-        }
+        router.push({
+          name:'home',
+          params: {userInfo:(user.uid)},
+        })
       } catch (error) {
         this.ErrorMessage = true
         switch(error.code) {
@@ -56,16 +53,14 @@ export const useUserStore = defineStore( "userStore", {
       }
     },
     async GithubSignIn() {
-      signInWithPopup(auth, providerGithub)
-        .then((result) => {
-          this.user = result.user
-          if(this.user){
-            router.push({
-              name:'home',
-              params: {userInfo:(user.uid)},
-            })
-          }
-        }).catch((error) => {
+      try {
+        const result = await signInWithPopup(auth, providerGithub)
+        this.user = result.user
+        router.push({
+          name:'home',
+          params: {userInfo:(user.uid)},
+        })
+      } catch (error) {
           this.ErrorMessage = true
           console.log(error)
           switch(error.code) {
@@ -76,7 +71,7 @@ export const useUserStore = defineStore( "userStore", {
               this.error = "You're not authorized to access this application. Please Sign Up.";
               break;
           }
-        })
+      }
     },
     EmailSign(e){
       const email = document.getElementById('clientEmail').value

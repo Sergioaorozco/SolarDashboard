@@ -40,7 +40,7 @@ export const useUserStore = defineStore( "userStore", {
         let uid = this.user.uid
         if(this.user){
           router.push({
-            name:'home',
+            name:'dashboard',
             params: {userInfo:(uid)},
           })
         }
@@ -63,7 +63,7 @@ export const useUserStore = defineStore( "userStore", {
         this.user = result.user
         if(this.user){
           router.push({
-            name:'home',
+            name:'dashboard',
             params: {userInfo:(uid)},
           })
         }
@@ -90,7 +90,7 @@ export const useUserStore = defineStore( "userStore", {
         this.user = result.user
         if(this.user){
           router.push({
-            name:'home',
+            name:'dashboard',
             params: {userInfo:(uid)},
           })
         }

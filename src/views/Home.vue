@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-start">
-    <aside class="w-[var(--widthSidebar)] h-screen fixed z-10 bg-slate-50 border-r border-slate-100 pt-3 pb-10 px-4">
+    <aside class="w-[var(--widthSidebar)] h-screen z-10 bg-slate-50 border-r border-slate-100 pt-3 pb-10 px-4">
       <div class="flex justify-between flex-col h-full">
         <nav>
           <div class="flex flex-col mb-20">
@@ -27,12 +27,14 @@
         </div>
       </div>
     </aside>
-    <section class="pl-10 pr-8 py-6 w-full viewOverflow">
-      <img v-tooltip.left="userLogged.displayName" class="w-12 h-12 rounded-full absolute right-10" :src="userLogged.photoURL || defaultImg" alt="profile image">
-      <div class="mt-3">
-        <router-view name="dashboard"></router-view>
-        <router-view name="users"></router-view>
-        <router-view name="accounts"></router-view>
+    <section class="pl-10 pr-8 py-6 w-screen h-screen overflow-auto">
+      <div>
+        <img v-tooltip.left="userLogged.displayName" class="w-12 h-12 rounded-full fixed right-10 top-4" :src="userLogged.photoURL || defaultImg" alt="profile image">
+        <div class="mt-3">
+          <router-view name="dashboard"></router-view>
+          <router-view name="users"></router-view>
+          <router-view name="accounts"></router-view>
+        </div>
       </div>
     </section>
   </div>

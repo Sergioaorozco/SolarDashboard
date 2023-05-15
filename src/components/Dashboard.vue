@@ -2,10 +2,16 @@
   <div>
     <p class="text-slate-600 text-2xl font-bold mb-3">Latest Tasks</p>
     <section class="grid grid-cols-3 gap-x-2 items-center mb-5">
-      <article v-for="value in Rates" class="bg-slate-100 rounded-lg p-4 h-32">
-        <p>{{ value.brand }}</p>
+      <article v-for="value in Rates" class="bg-slate-50 rounded-lg p-4 h-32">
+        <p class="text-slate-400 font-semibold">{{ value.brand }}</p>
       </article>
     </section>
+    <DataTable :value="cars" stripedRows>
+      <Column field="vin" header="Vin"></Column>
+      <Column field="year" header="Year"></Column>
+      <Column field="brand" header="Brand"></Column>
+      <Column field="color" header="Color"></Column>
+    </DataTable>
     <DataTable :value="cars" stripedRows>
       <Column field="vin" header="Vin"></Column>
       <Column field="year" header="Year"></Column>

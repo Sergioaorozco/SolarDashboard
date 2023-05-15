@@ -1,7 +1,18 @@
 <template>
   <div>
-    <h1>This is a Title</h1>
-    <DataTable :value="cars">
+    <p class="text-slate-600 text-2xl font-bold mb-3">Latest Tasks</p>
+    <section class="grid grid-cols-3 justify-start items-center gap-x-4">
+      <article class="bg-slate-100 py-4 rounded-lg">
+        <p>Profile 01</p>
+      </article>
+      <article class="bg-slate-200 p-4 rounded-lg">
+        <p>Profile 02</p>
+      </article>
+      <article class="bg-slate-200 p-4 rounded-lg">
+        <p>Profile 03</p>
+      </article>
+    </section>
+    <DataTable :value="cars" stripedRows>
       <Column field="vin" header="Vin"></Column>
       <Column field="year" header="Year"></Column>
       <Column field="brand" header="Brand"></Column>

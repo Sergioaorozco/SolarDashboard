@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-start">
-    <aside class="w-1/6 h-screen bg-slate-50 border-r border-slate-100 pt-3 pb-10 px-10">
+    <aside class="w-1/6 h-screen fixed z-10 bg-slate-50 border-r border-slate-100 pt-3 pb-10 px-10">
       <div class="flex justify-between flex-col h-full">
         <nav>
           <figure class="flex items-center py-2 mb-20">
@@ -8,9 +8,9 @@
             <p class="text-2xl font-bold text-slate-700 my-4">VisualSolar</p>
           </figure>
           <div class="flex flex-col gap-4">
-            <router-link :to="{name:'dashboard'}" class="hover:bg-slate-100 px-2 py-2 rounded-lg">Dashboard</router-link>
-            <router-link :to="{name:'users'}" class="hover:bg-slate-100 px-2 py-2 rounded-lg">Users</router-link>
-            <router-link :to="{name:'accounts'}" class="hover:bg-slate-100 px-2 py-2 rounded-lg">Accounts</router-link>
+            <router-link :to="{name:'dashboard'}" class="hover:bg-slate-100 px-4 py-2 rounded-full">Dashboard</router-link>
+            <router-link :to="{name:'users'}" class="hover:bg-slate-100 px-4 py-2 rounded-full">Users</router-link>
+            <router-link :to="{name:'accounts'}" class="hover:bg-slate-100 px-4 py-2 rounded-full">Accounts</router-link>
           </div>
         </nav>
         <div class="flex flex-col">
@@ -24,9 +24,8 @@
         </div>
       </div>
     </aside>
-    <section class="pl-10 pr-8 py-6 w-full">
-      <header class="flex justify-between items-center">
-        <p class="text-slate-600 text-2xl font-bold">Latest Tasks</p>
+    <section class="pl-10 pr-8 py-6 w-full viewOverflow">
+      <header class="flex justify-end items-center">
         <figure>
           <img v-tooltip.left="userLogged.displayName" class="w-12 h-12 rounded-full" :src="userLogged.photoURL || defaultImg" alt="profile image">
         </figure>
@@ -51,7 +50,7 @@ export default defineComponent ({
   data () {
     return {
       defaultImg: '../defaultimage.svg',
-      userInfo:{},
+      activeElement:'',
       userLogged: this.userStore.$state.user
     }
   },
@@ -59,10 +58,19 @@ export default defineComponent ({
     logOut(){
       this.userStore.logOut();
     },
+
   },
 })
 </script>
 
 <style scoped>
+
+:root {
+  --left: 370px;
+}
+
+.viewOverflow {
+  padding-left: 370px;
+}
 .wrapper { padding-inline: 3em; }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <p class="text-slate-600 text-2xl font-bold mb-3">Latest Tasks</p>
-    <section class="grid grid-cols-3 justify-start items-center gap-x-4">
+    <section class="grid grid-rows-3 items-center gap-x-4">
       <article class="bg-slate-100 py-4 rounded-lg">
         <p>Profile 01</p>
       </article>

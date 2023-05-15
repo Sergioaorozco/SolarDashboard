@@ -2,29 +2,36 @@
   <div class="">
     <p class="text-slate-600 text-2xl font-bold mb-3">Dashboard</p>
     <section class="grid grid-cols-4 gap-x-4 items-center mb-5">
-      <article v-for="dash in Rates" class="bg-slate-50 border border-slate-200 b rounded-lg p-4 h-28 flex flex-col justify-between">
+      <article v-for="dash in Rates" class="card h-28 flex flex-col justify-between">
         <p class="text-slate-500 font-semibold"><i :class="dash.icon , dash.color, dash.text" class="pi p-2  rounded-full"></i> {{ dash.title }}</p>
         <div class="flex justify-between">
           <p class="text-slate-400 text-3xl">${{ dash.price }}<span class="ml-1 text-xs">USD</span></p>
           <div>
-            <p class="text-teal-600 text-sm font-bold"><i class="pi pi-arrow-up-right mr-2"></i>8%</p>
+            <p class="text-slate-600 text-sm font-bold"><i class="pi pi-arrow-up-right mr-2"></i>8%</p>
             <p class="text-slate-400 text-xs underline">View last days</p>
           </div>
-          
         </div>
       </article>
     </section>
-    <DataTable :value="cars" stripedRows>
-      <Column field="vin" header="Vin"></Column>
-      <Column field="year" header="Year"></Column>
-      <Column field="brand" header="Brand"></Column>
-      <Column field="color" header="Color"></Column>
-    </DataTable>
+    <section class="flex justify-between gap-x-3">
+      <div class="card w-2/3 p-5">
+        <DataTable :value="cars" stripedRows>
+          <Column field="vin" header="Vin"></Column>
+          <Column field="year" header="Year"></Column>
+          <Column field="brand" header="Brand"></Column>
+          <Column field="color" header="Color"></Column>
+        </DataTable>
+      </div>
+      <div class="card w-1/3">
+        <Chart type="line" :data="chartData" :options="chartOptions" class="h-30rem" />
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
 import DataTable from 'primevue/datatable';
+import Chart from 'primevue/chart';
 import Column from 'primevue/column';
 export default {
   data(){
@@ -51,7 +58,17 @@ export default {
   },
   components: {
     DataTable,
-    Column
+    Column,
+    Chart
   }
 }
 </script>
+
+<style>
+.card {
+  background-color: rgb(248 250 252 / var(--tw-bg-opacity));
+  border-width: 1px;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+</style>

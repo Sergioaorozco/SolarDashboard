@@ -4,7 +4,7 @@
       <div class="flex justify-between flex-col h-full">
         <nav>
           <div class="flex flex-col mb-20 mx-auto">
-            <figure class="flex justify-center items-center py-2">
+            <figure class="flex items-center py-2">
               <img class="w-8 mr-2" src="/vite.svg" alt="">
               <p class="text-xl font-bold text-slate-700 my-4">VisualSolar</p>
             </figure>

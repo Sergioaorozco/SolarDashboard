@@ -3,7 +3,8 @@ import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Home from '../views/Home.vue'
 import Dashboard from '../components/Dashboard.vue'
-import HelloWorld from '../components/HelloWorld.vue'
+import Tasks from '../components/Tasks.vue'
+import Team from '../components/Team.vue'
 
 
 const routes = [
@@ -30,17 +31,17 @@ const routes = [
         },
       },
       {
-        path: '/home/:userInfo/users',
-        name:'users',
+        path: '/home/:userInfo/tasks',
+        name:'tasks',
         components: {
-          users: HelloWorld
+          tasks: Tasks
         },
       },
       {
-        path: '/home/:userInfo/accounts',
-        name:'accounts',
+        path: '/home/:userInfo/team',
+        name:'team',
         components: {
-          accounts: Dashboard
+          team: Team
         },
       },
   ],

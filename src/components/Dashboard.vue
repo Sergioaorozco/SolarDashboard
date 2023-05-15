@@ -1,9 +1,17 @@
 <template>
-  <div>
-    <p class="text-slate-600 text-2xl font-bold mb-3">Latest Tasks</p>
-    <section class="grid grid-cols-3 gap-x-2 items-center mb-5">
-      <article v-for="value in Rates" class="bg-slate-50 rounded-lg p-4 h-32">
-        <p class="text-slate-400 font-semibold">{{ value.brand }}</p>
+  <div class="">
+    <p class="text-slate-600 text-2xl font-bold mb-3">Dashboard</p>
+    <section class="grid grid-cols-4 gap-x-4 items-center mb-5">
+      <article v-for="dash in Rates" class="bg-slate-50 rounded-lg p-4 h-28 flex flex-col justify-between">
+        <p class="text-slate-500 font-semibold"><i :class="dash.icon , dash.color, dash.text" class="pi p-2  rounded-full"></i> {{ dash.title }}</p>
+        <div class="flex justify-between">
+          <p class="text-slate-400 text-3xl">${{ dash.price }}<span class="ml-1 text-xs">USD</span></p>
+          <div>
+            <p class="text-teal-600 text-sm font-bold"><i class="pi pi-arrow-up-right mr-2"></i>8%</p>
+            <p class="text-slate-400 text-xs underline">View last days</p>
+          </div>
+          
+        </div>
       </article>
     </section>
     <DataTable :value="cars" stripedRows>
@@ -40,9 +48,10 @@ export default {
         {"brand": "Fiat", "year": 2013, "color": "Red", "vin": "245t2s"}
       ],
       Rates: [
-        {"brand": "Volkswagen", "year": 2012, "price": 4000, "vin": "dsad231ff"},
-        {"brand": "Audi", "year": 2012, "price": 4000, "vin": "dsad231ff"},
-        {"brand": "Renault", "year": 2012, "price": 4000, "vin": "dsad231ff"},
+        {"title": "Total Revenue", "year": 2012, "price": 4000, "icon": "pi-dollar" ,'color':"bg-green-100", 'text': 'text-green-700'},
+        {"title": "Total Customer", "year": 2012, "price": 4000, "icon": "pi-users" ,'color':"bg-amber-200", 'text': 'text-amber-700'},
+        {"title": "Total Transaction", "year": 2012, "price": 4000, "icon": "pi-bookmark" ,'color':"bg-teal-200", 'text': 'text-teal-700'},
+        {"title": "Total Product", "year": 2012, "price": 4000, "icon": "pi-bolt" ,'color':"bg-blue-200", 'text': 'text-blue-700'},
       ]
     }
   },

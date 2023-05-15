@@ -11,9 +11,9 @@
             <div class="border-b w-full border-slate-100 mt-3"></div>
           </div>
           <div class="flex flex-col gap-4">
-            <router-link :to="{name:'dashboard'}" class="hover:bg-slate-100 px-4 py-2 rounded-full">Dashboard</router-link>
-            <router-link :to="{name:'users'}" class="hover:bg-slate-100 px-4 py-2 rounded-full">Users</router-link>
-            <router-link :to="{name:'accounts'}" class="hover:bg-slate-100 px-4 py-2 rounded-full">Accounts</router-link>
+            <router-link :to="{name:'dashboard'}" class="hover:bg-slate-100 text-slate-600 font-semibold px-4 py-2 rounded-full"><i class="pi pi-chart-line mr-2"></i>Dashboard</router-link>
+            <router-link :to="{name:'tasks'}" class="hover:bg-slate-100 text-slate-600 font-semibold px-4 py-2 rounded-full"><i class="pi pi-check-square mr-2"></i>My Tasks</router-link>
+            <router-link :to="{name:'team'}" class="hover:bg-slate-100 text-slate-600 font-semibold px-4 py-2 rounded-full"><i class="pi pi-users mr-2"></i>Team</router-link>
           </div>
         </nav>
         <div class="flex flex-col">
@@ -32,8 +32,8 @@
         <img v-tooltip.left="userLogged.displayName" class="w-12 h-12 rounded-full fixed right-10 top-4 z-20" :src="userLogged.photoURL || defaultImg" alt="profile image">
         <div class="mt-3">
           <router-view name="dashboard"></router-view>
-          <router-view name="users"></router-view>
-          <router-view name="accounts"></router-view>
+          <router-view name="tasks"></router-view>
+          <router-view name="team"></router-view>
         </div>
       </div>
     </section>

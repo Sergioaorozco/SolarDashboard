@@ -25,11 +25,7 @@
       </div>
     </aside>
     <section class="pl-10 pr-8 py-6 w-full viewOverflow">
-      <header class="flex justify-end items-center">
-        <figure>
-          <img v-tooltip.left="userLogged.displayName" class="w-12 h-12 rounded-full" :src="userLogged.photoURL || defaultImg" alt="profile image">
-        </figure>
-      </header>
+      <img v-tooltip.left="userLogged.displayName" class="w-12 h-12 rounded-full absolute right-10" :src="userLogged.photoURL || defaultImg" alt="profile image">
       <div class="mt-10">
         <router-view name="dashboard"></router-view>
         <router-view name="users"></router-view>

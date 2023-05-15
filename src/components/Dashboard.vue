@@ -2,7 +2,7 @@
   <div class="">
     <p class="text-slate-600 text-2xl font-bold mb-3">Dashboard</p>
     <section class="grid grid-cols-4 gap-x-4 items-center mb-5">
-      <article v-for="dash in Rates" class="bg-slate-50 border border-slate-100 rounded-lg p-4 h-28 flex flex-col justify-between">
+      <article v-for="dash in Rates" class="bg-slate-50/60 border border-slate-200 b rounded-lg p-4 h-28 flex flex-col justify-between">
         <p class="text-slate-500 font-semibold"><i :class="dash.icon , dash.color, dash.text" class="pi p-2  rounded-full"></i> {{ dash.title }}</p>
         <div class="flex justify-between">
           <p class="text-slate-400 text-3xl">${{ dash.price }}<span class="ml-1 text-xs">USD</span></p>
@@ -14,12 +14,6 @@
         </div>
       </article>
     </section>
-    <DataTable :value="cars" stripedRows>
-      <Column field="vin" header="Vin"></Column>
-      <Column field="year" header="Year"></Column>
-      <Column field="brand" header="Brand"></Column>
-      <Column field="color" header="Color"></Column>
-    </DataTable>
     <DataTable :value="cars" stripedRows>
       <Column field="vin" header="Vin"></Column>
       <Column field="year" header="Year"></Column>

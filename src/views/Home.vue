@@ -3,10 +3,10 @@
     <aside class="w-[var(--widthSidebar)] h-screen bg-slate-50 border-r border-slate-100 pt-3 pb-10 px-4">
       <div class="flex justify-between flex-col h-full">
         <nav>
-          <div class="flex flex-col mb-20">
+          <div class="flex flex-col mb-20 mx-auto">
             <figure class="flex items-center py-2">
-              <img class="w-10 mr-2" src="/vite.svg" alt="">
-              <p class="text-2xl font-bold text-slate-700 my-4">VisualSolar</p>
+              <img class="w-8 mr-2" src="/vite.svg" alt="">
+              <p class="text-xl font-bold text-slate-700 my-4">VisualSolar</p>
             </figure>
             <div class="border-b w-full border-slate-100 mt-3"></div>
           </div>

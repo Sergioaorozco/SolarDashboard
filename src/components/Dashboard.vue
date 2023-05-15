@@ -1,15 +1,9 @@
 <template>
   <div>
     <p class="text-slate-600 text-2xl font-bold mb-3">Latest Tasks</p>
-    <section class="grid grid-rows-3 items-center gap-x-4">
-      <article class="bg-slate-100 py-4 rounded-lg">
-        <p>Profile 01</p>
-      </article>
-      <article class="bg-slate-200 p-4 rounded-lg">
-        <p>Profile 02</p>
-      </article>
-      <article class="bg-slate-200 p-4 rounded-lg">
-        <p>Profile 03</p>
+    <section class="grid grid-cols-3 gap-x-2 items-center mb-5">
+      <article v-for="value in Rates" class="bg-slate-100 rounded-lg p-4 h-32">
+        <p>{{ value.brand }}</p>
       </article>
     </section>
     <DataTable :value="cars" stripedRows>
@@ -38,7 +32,12 @@ export default {
         {"brand": "Jaguar", "year": 2013, "color": "Orange", "vin": "greg34"},
         {"brand": "Ford", "year": 2000, "color": "Black", "vin": "h54hw5"},
         {"brand": "Fiat", "year": 2013, "color": "Red", "vin": "245t2s"}
-    ]
+      ],
+      Rates: [
+        {"brand": "Volkswagen", "year": 2012, "price": 4000, "vin": "dsad231ff"},
+        {"brand": "Audi", "year": 2012, "price": 4000, "vin": "dsad231ff"},
+        {"brand": "Renault", "year": 2012, "price": 4000, "vin": "dsad231ff"},
+      ]
     }
   },
   components: {

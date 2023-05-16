@@ -5,7 +5,7 @@
       <article v-for="dash in Rates" :key="dash.title" class="card h-28 flex flex-col justify-between">
         <p class="text-slate-500 font-semibold"><i :class="dash.icon , dash.color, dash.text" class="pi p-2  rounded-full"></i> {{ dash.title }}</p>
         <div class="flex justify-between">
-          <p class="text-slate-400 text-2xl lg:text-3xl">${{ rateFixed(dash.price) }}<span class="ml-1 text-xs">USD</span></p>
+          <p class="text-slate-400 text-2xl lg:text-2xl">${{ rateFixed(dash.price) }}<span class="ml-1 text-xs">USD</span></p>
           <div>
             <p class="text-slate-600 text-sm font-bold"><i class="pi pi-arrow-up-right mr-2"></i>8%</p>
             <p class="text-slate-400 text-xs underline">View last days</p>

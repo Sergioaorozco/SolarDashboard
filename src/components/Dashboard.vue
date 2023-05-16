@@ -15,6 +15,10 @@
     </section>
     <section class="flex justify-between gap-x-3">
       <div class="card w-2/3 p-5">
+        <chatVisualization />
+
+      </div>
+      <div class="bg-white card w-1/2">
         <DataTable :value="cars" stripedRows>
           <Column field="vin" header="Vin"></Column>
           <Column field="year" header="Year"></Column>
@@ -22,17 +26,15 @@
           <Column field="color" header="Color"></Column>
         </DataTable>
       </div>
-      <div class="card w-1/3">
-        <Chart type="line" :data="chartData" :options="chartOptions" class="h-30rem" />
-      </div>
     </section>
   </div>
 </template>
 
 <script>
 import DataTable from 'primevue/datatable';
-import Chart from 'primevue/chart';
 import Column from 'primevue/column';
+import chatVisualization from '../components/chatVisualization.vue'
+
 export default {
   data(){
     return {
@@ -43,10 +45,6 @@ export default {
         {"brand": "BMW", "year": 2003, "color": "Blue", "vin": "j6w54qgh"},
         {"brand": "Mercedes", "year": 1995, "color": "Orange", "vin": "hrtwy34"},
         {"brand": "Volvo", "year": 2005, "color": "Black", "vin": "jejtyj"},
-        {"brand": "Honda", "year": 2012, "color": "Yellow", "vin": "g43gr"},
-        {"brand": "Jaguar", "year": 2013, "color": "Orange", "vin": "greg34"},
-        {"brand": "Ford", "year": 2000, "color": "Black", "vin": "h54hw5"},
-        {"brand": "Fiat", "year": 2013, "color": "Red", "vin": "245t2s"}
       ],
       Rates: [
         {"title": "Total Revenue", "year": 2012, "price": 4000, "icon": "pi-dollar" ,'color':"bg-green-100", 'text': 'text-green-700'},
@@ -57,10 +55,10 @@ export default {
     }
   },
   components: {
+    chatVisualization,
     DataTable,
     Column,
-    Chart
-  }
+  },
 }
 </script>
 

@@ -5,7 +5,7 @@
       <article v-for="dash in Rates" :key="dash.title" class="card h-28 flex flex-col justify-between">
         <p class="text-slate-500 font-semibold"><i :class="dash.icon , dash.color, dash.text" class="pi p-2  rounded-full"></i> {{ dash.title }}</p>
         <div class="flex justify-between">
-          <p class="text-slate-400 text-3xl">${{ dash.price }}<span class="ml-1 text-xs">USD</span></p>
+          <p class="text-slate-400 text-3xl">${{ rateFixed(dash.price) }}<span class="ml-1 text-xs">USD</span></p>
           <div>
             <p class="text-slate-600 text-sm font-bold"><i class="pi pi-arrow-up-right mr-2"></i>8%</p>
             <p class="text-slate-400 text-xs underline">View last days</p>
@@ -54,6 +54,11 @@ export default {
         {"title": "Total Transaction", "year": 2012, "price": 3232, "icon": "pi-bookmark" ,'color':"bg-teal-200", 'text': 'text-teal-700'},
         {"title": "Total Product", "year": 2012, "price": 12000, "icon": "pi-bolt" ,'color':"bg-blue-200", 'text': 'text-blue-700'},
       ]
+    }
+  },
+  methods: {
+    rateFixed(val){
+      return Number(val).toLocaleString('en-US', {maximumFractionDigits: 2, minimumFractionDigits:2})
     }
   },
   components: {

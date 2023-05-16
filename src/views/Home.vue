@@ -52,18 +52,27 @@ export default defineComponent ({
     return {
       defaultImg: '../defaultimage.svg',
       activeElement:'',
-      userLogged: this.userStore.$state.user
+      userLogged: this.userStore.$state.user,
+      routerActive: false
     }
   },
   methods: {
     logOut(){
       this.userStore.logOut();
-    },
-
-  },
+    }
+  }
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .wrapper { padding-inline: 3em; }
+
+.router-link-active,.router-link-exact-active {
+ background: #64748b;
+ color: white; 
+ &:hover {
+  background: #334155;
+  color: white;
+ }
+}
 </style>

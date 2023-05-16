@@ -3,7 +3,10 @@
     <p class="text-slate-600 text-2xl font-bold mb-3">Dashboard</p>
     <section class="grid grid-cols-4 gap-x-4 items-center mb-8">
       <article v-for="dash in Rates" :key="dash.title" class="card h-28 flex flex-col justify-between">
-        <p class="text-slate-500 font-semibold"><i :class="dash.icon , dash.color, dash.text" class="pi p-2  rounded-full"></i> {{ dash.title }}</p>
+        <figure class="flex items-center gap-x-2">
+          <i :class="dash.icon , dash.color, dash.text" class="pi p-2 rounded-full align-middle"></i>
+          <p class="text-slate-500 font-semibold">{{ dash.title }}</p>
+        </figure>
         <div class="flex justify-between">
           <p class="text-slate-400 text-2xl lg:text-2xl">${{ rateFixed(dash.price) }}<span class="ml-1 text-xs">USD</span></p>
           <div>

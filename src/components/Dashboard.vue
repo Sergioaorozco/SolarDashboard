@@ -7,7 +7,7 @@
           <i :class="dash.icon , dash.color, dash.text" class="pi p-2 rounded-full align-middle"></i>
           <p class="text-slate-500 font-semibold">{{ dash.title }}</p>
         </figure>
-        <div class="flex justify-between">
+        <div class="flex justify-between items-end">
           <p class="text-slate-400 text-2xl lg:text-2xl">${{ rateFixed(dash.price) }}<span class="ml-1 text-xs">USD</span></p>
           <div>
             <p class="text-slate-600 text-sm font-bold"><i class="pi pi-arrow-up-right mr-2"></i>8%</p>

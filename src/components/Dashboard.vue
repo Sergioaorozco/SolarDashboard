@@ -18,11 +18,15 @@
         <chatVisualization />
       </div>
       <div class="bg-white card w-1/2">
-        <DataTable :value="cars" stripedRows>
-          <Column field="vin" header="Vin"></Column>
-          <Column field="year" header="Year"></Column>
-          <Column field="brand" header="Brand"></Column>
-          <Column field="color" header="Color"></Column>
+        <div class="flex justify-between items-center">
+          <p class="text-lg text-slate-500 font-semibold mb-3">Top Transaction</p>
+          <p class="text-xs mb-3 bg-blue-100 text-blue-500 px-3 py-1 rounded-full hover:bg-blue-200 transition-colors duration-300">View Detail</p>
+        </div>
+        <DataTable :value="cars" stripedRows >
+          <Column sortable field="vin" header="Vin"></Column>
+          <Column sortable field="year" header="Year"></Column>
+          <Column sortable field="brand" header="Brand"></Column>
+          <Column sortable field="color" header="Color"></Column>
         </DataTable>
       </div>
     </section>
@@ -43,7 +47,6 @@ export default {
         {"brand": "Renault", "year": 2005, "color": "Gray", "vin": "h354htr"},
         {"brand": "BMW", "year": 2003, "color": "Blue", "vin": "j6w54qgh"},
         {"brand": "Mercedes", "year": 1995, "color": "Orange", "vin": "hrtwy34"},
-        {"brand": "Volvo", "year": 2005, "color": "Black", "vin": "jejtyj"},
       ],
       Rates: [
         {"title": "Total Revenue", "year": 2012, "price": 4000, "icon": "pi-dollar" ,'color':"bg-green-100", 'text': 'text-green-700'},
@@ -61,11 +64,16 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .card {
   background-color: rgb(248 250 252 / var(--tw-bg-opacity));
   border-width: 1px;
   border-radius: 0.5rem;
   padding: 1rem;
+}
+
+.p-datatable-thead {
+  th[role=columnheader]:first-child { border-top-left-radius: 10px; }
+  th[role=columnheader]:last-child { border-top-right-radius: 10px; }
 }
 </style>

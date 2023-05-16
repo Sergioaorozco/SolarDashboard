@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <p class="text-slate-600 text-2xl font-bold mb-3">Dashboard</p>
-    <section class="grid grid-cols-4 gap-x-4 items-center mb-5">
+    <section class="grid grid-cols-4 gap-x-4 items-center mb-8">
       <article v-for="dash in Rates" class="card h-28 flex flex-col justify-between">
         <p class="text-slate-500 font-semibold"><i :class="dash.icon , dash.color, dash.text" class="pi p-2  rounded-full"></i> {{ dash.title }}</p>
         <div class="flex justify-between">
@@ -13,10 +13,9 @@
         </div>
       </article>
     </section>
-    <section class="flex justify-between gap-x-3">
+    <section class="flex justify-between gap-x-3 mt-3">
       <div class="card w-2/3 p-5">
         <chatVisualization />
-
       </div>
       <div class="bg-white card w-1/2">
         <DataTable :value="cars" stripedRows>

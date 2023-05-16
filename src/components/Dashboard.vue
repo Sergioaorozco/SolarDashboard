@@ -49,10 +49,10 @@ export default {
         {"brand": "Mercedes", "year": 1995, "color": "Orange", "vin": "hrtwy34"},
       ],
       Rates: [
-        {"title": "Total Revenue", "year": 2012, "price": 4000, "icon": "pi-dollar" ,'color':"bg-green-100", 'text': 'text-green-700'},
-        {"title": "Total Customer", "year": 2012, "price": 4000, "icon": "pi-users" ,'color':"bg-amber-200", 'text': 'text-amber-700'},
-        {"title": "Total Transaction", "year": 2012, "price": 4000, "icon": "pi-bookmark" ,'color':"bg-teal-200", 'text': 'text-teal-700'},
-        {"title": "Total Product", "year": 2012, "price": 4000, "icon": "pi-bolt" ,'color':"bg-blue-200", 'text': 'text-blue-700'},
+        {"title": "Total Revenue", "year": 2012, "price": 1203, "icon": "pi-dollar" ,'color':"bg-green-100", 'text': 'text-green-700'},
+        {"title": "Total Customer", "year": 2012, "price": 3240, "icon": "pi-users" ,'color':"bg-amber-200", 'text': 'text-amber-700'},
+        {"title": "Total Transaction", "year": 2012, "price": 3232, "icon": "pi-bookmark" ,'color':"bg-teal-200", 'text': 'text-teal-700'},
+        {"title": "Total Product", "year": 2012, "price": 12000, "icon": "pi-bolt" ,'color':"bg-blue-200", 'text': 'text-blue-700'},
       ]
     }
   },

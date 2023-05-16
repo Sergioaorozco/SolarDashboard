@@ -20,7 +20,7 @@
       <div class="bg-white card w-1/2">
         <div class="flex justify-between items-center">
           <p class="text-lg text-slate-500 font-semibold mb-3">Top Transaction</p>
-          <p class="text-xs mb-3 bg-blue-100 text-blue-500 px-3 py-1 rounded-full hover:bg-blue-200 transition-colors duration-300">View Detail</p>
+          <button class="text-xs mb-3 bg-blue-100 text-blue-500 px-3 py-1 rounded-full hover:bg-blue-200 transition-colors duration-300">View Detail</button>
         </div>
         <DataTable :value="cars" stripedRows >
           <Column sortable field="vin" header="Vin"></Column>

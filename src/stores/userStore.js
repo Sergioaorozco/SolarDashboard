@@ -26,7 +26,7 @@ const auth = getAuth()
 export const useUserStore = defineStore( "userStore", {
   state: () => {
     return {
-      user: null,
+      user: JSON.parse(localStorage.getItem('user')),
       error: null,
       ErrorMessage: false
     }
@@ -37,6 +37,7 @@ export const useUserStore = defineStore( "userStore", {
         await setPersistence(auth, browserLocalPersistence);
         const result = await signInWithPopup(auth, providerGoogle)
         this.user = result.user
+        localStorage.setItem('user', JSON.stringify(this.user))
         let uid = this.user.uid
         if(this.user){
           router.push({

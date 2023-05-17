@@ -38,10 +38,7 @@ export const useUserStore = defineStore( "userStore", {
         onAuthStateChanged(auth, (user) => {
           if (user) {
             this.user = user;
-            router.push({
-              name:'dashboard',
-              params: {userInfo:(uid)},
-            })
+            router.push({name:'dashboard',})
             localStorage.setItem('user', JSON.stringify(user));
           } else {
             this.user = null;
@@ -56,11 +53,7 @@ export const useUserStore = defineStore( "userStore", {
       try {
         const result = await signInWithPopup(auth, providerGoogle)
         this.user = result.user
-        let uid = this.user.uid
-        router.push({
-            name:'dashboard',
-            params: {userInfo:(uid)},
-        })
+        router.push({name:'dashboard',})
       } catch (error) {
         this.handleAuthError(error);
       }
@@ -69,10 +62,7 @@ export const useUserStore = defineStore( "userStore", {
       try {
         const result = await signInWithPopup(auth, providerGithub)
         this.user = result.user
-        router.push({
-          name:'dashboard',
-          params: {userInfo:(uid)},
-        })
+        router.push({name:'dashboard',})
       } catch (error) {
         this.handleAuthError(error);
       }
@@ -84,9 +74,7 @@ export const useUserStore = defineStore( "userStore", {
         const password = document.getElementById('clientPass').value
         const result = await signInWithEmailAndPassword(auth, email, password)
         this.user = result.user
-        router.push({
-          name:'dashboard',
-          params: {userInfo:(uid)},
+        router.push({name:'dashboard',
         })
       } catch(error) {
         this.handleAuthError(error);

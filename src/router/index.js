@@ -19,26 +19,26 @@ const routes = [
     component: Register
   },
   {
-    path:'/home/:userInfo',
+    path:'/home',
     name:'home',
     component: Home,
     children: [
       {
-        path: '/home/:userInfo/dashboard',
+        path: '/home/dashboard',
         name:'dashboard',
         components: {
           dashboard: Dashboard
         },
       },
       {
-        path: '/home/:userInfo/tasks',
+        path: '/home/tasks',
         name:'tasks',
         components: {
           tasks: Tasks
         },
       },
       {
-        path: '/home/:userInfo/team',
+        path: '/home/team',
         name:'team',
         components: {
           team: Team

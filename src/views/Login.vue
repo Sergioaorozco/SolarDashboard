@@ -114,6 +114,9 @@ export default {
     const userStore = useUserStore()
     return { userStore }
   },
+  computed() {
+    this.userStore.initializeAuth();
+  },
   methods: {
     GoogleSignIn() {
       this.userStore.GoogleSignIn();

@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 // Configuration
-import { getAuth, signInWithPopup, GithubAuthProvider, GoogleAuthProvider, signInWithEmailAndPassword, setPersistence, browserLocalPersistence, signOut  } from 'firebase/auth'
+import { getAuth, signInWithPopup, GithubAuthProvider, GoogleAuthProvider, signInWithEmailAndPassword, setPersistence, browserLocalPersistence, signOut, onAuthStateChanged } from 'firebase/auth';
 import firebase from 'firebase/compat/app'
 import router from '../router';
 // Firebase Configuration
@@ -32,53 +32,49 @@ export const useUserStore = defineStore( "userStore", {
     }
   },
   actions: {
-    async GoogleSignIn() {
+    async initializeAuth() {
       try {
         await setPersistence(auth, browserLocalPersistence);
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+            this.user = user;
+            router.push({
+              name:'dashboard',
+              params: {userInfo:(uid)},
+            })
+            localStorage.setItem('user', JSON.stringify(user));
+          } else {
+            this.user = null;
+            localStorage.removeItem('user');
+          }
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async GoogleSignIn() {
+      try {
         const result = await signInWithPopup(auth, providerGoogle)
         this.user = result.user
-        localStorage.setItem('user', JSON.stringify(this.user))
         let uid = this.user.uid
-        if(this.user){
-          router.push({
+        router.push({
             name:'dashboard',
             params: {userInfo:(uid)},
-          })
-        }
+        })
       } catch (error) {
-        this.ErrorMessage = true
-        switch(error.code) {
-          case "auth/account-exists-with-different-credential":
-            this.error = "Invalid Email.";
-            break;
-          case "auth/user-not-found":
-            this.error = "You're not authorized to access this application. Please Sign Up.";
-            break;
-        }
+        this.handleAuthError(error);
       }
     },
     async GithubSignIn() {
       try {
-        await setPersistence(auth, browserLocalPersistence);
         const result = await signInWithPopup(auth, providerGithub)
         this.user = result.user
-        if(this.user){
-          router.push({
-            name:'dashboard',
-            params: {userInfo:(uid)},
-          })
-        }
+        router.push({
+          name:'dashboard',
+          params: {userInfo:(uid)},
+        })
       } catch (error) {
-          this.ErrorMessage = true
-          console.log(error)
-          switch(error.code) {
-            case "auth/account-exists-with-different-credential":
-              this.error = "Invalid Email.";
-              break;
-            case "auth/user-not-found":
-              this.error = "You're not authorized to access this application. Please Sign Up.";
-              break;
-          }
+        this.handleAuthError(error);
       }
     },
     async EmailSign(e) {
@@ -86,34 +82,39 @@ export const useUserStore = defineStore( "userStore", {
         e.preventDefault()
         const email = document.getElementById('clientEmail').value
         const password = document.getElementById('clientPass').value
-        await setPersistence(auth, browserLocalPersistence);
         const result = await signInWithEmailAndPassword(auth, email, password)
         this.user = result.user
-        if(this.user){
-          router.push({
-            name:'dashboard',
-            params: {userInfo:(uid)},
-          })
-        }
+        router.push({
+          name:'dashboard',
+          params: {userInfo:(uid)},
+        })
       } catch(error) {
-          this.ErrorMessage = true
-          console.log(error)
-          switch (error.code) {
-            case "auth/invalid-email":
-              this.error = "Invalid Email.";
-              break;
-            case "auth/user-not-found":
-              this.error = "No account with that e-mail was found.";
-              break;
-            case "auth/wrong-password":
-              this.error = "Incorrect Password.";
-              break;
-        }
+        this.handleAuthError(error);
+      }
+    },
+    handleAuthError(error) {
+      this.ErrorMessage = true;
+      console.log(error);
+      switch (error.code) {
+        case "auth/account-exists-with-different-credential":
+          this.error = "Invalid Email.";
+          break;
+        case "auth/user-not-found":
+          this.error = "You're not authorized to access this application. Please Sign Up.";
+          break;
+        case "auth/invalid-email":
+          this.error = "Invalid Email.";
+          break;
+        case "auth/wrong-password":
+          this.error = "Incorrect Password.";
+          break;
+        default:
+          this.error = "An error occurred. Please try again.";
       }
     },
     logOut(){
       signOut(auth).then(() => {
-        this.user = '';
+        this.user= ''
         router.push({name:'login'})
       }).catch((error) => {
         console.log(error)

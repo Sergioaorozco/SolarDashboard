@@ -54,6 +54,7 @@ export const useUserStore = defineStore( "userStore", {
         const result = await signInWithPopup(auth, providerGoogle)
         this.user = result.user
         router.push({name:'dashboard',})
+        this.initializeAuth();
       } catch (error) {
         this.handleAuthError(error);
       }
@@ -74,6 +75,7 @@ export const useUserStore = defineStore( "userStore", {
         const password = document.getElementById('clientPass').value
         const result = await signInWithEmailAndPassword(auth, email, password)
         this.user = result.user
+        this.initializeAuth();
         router.push({name:'dashboard',
         })
       } catch(error) {

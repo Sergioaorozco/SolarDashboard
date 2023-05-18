@@ -101,7 +101,6 @@ export default {
   components: {
     Dropdown,
     Chip,
-    Tag,
   },
   methods: {
     addToproject(e){

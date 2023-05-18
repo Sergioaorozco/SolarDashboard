@@ -106,11 +106,8 @@ export default {
   }
 }
 
-
-
-
 </script>
 
 <style lang="scss">
-.actionsMenu.pi { font-size: 0.7rem;}
+.actionsMenu .pi.pi-ellipsis { font-size: 0.7rem;}
 </style>

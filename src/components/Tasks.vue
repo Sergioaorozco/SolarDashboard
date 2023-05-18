@@ -109,5 +109,5 @@ export default {
 </script>
 
 <style lang="scss">
-:deep(.actionsMenu .pi-ellipsis-v) { font-size: 0.7rem;}
+
 </style>

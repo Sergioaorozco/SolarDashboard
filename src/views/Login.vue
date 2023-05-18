@@ -100,7 +100,6 @@
 </template>
 <script>
 import { useUserStore } from '../stores/userStore'
-import router from '../router'
 
 export default {
   data() {
@@ -113,9 +112,6 @@ export default {
   setup() {
     const userStore = useUserStore()
     return { userStore }
-  },
-  computed() {
-    this.userStore.initializeAuth();
   },
   methods: {
     GoogleSignIn() {

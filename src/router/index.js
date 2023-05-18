@@ -26,24 +26,18 @@ const routes = [
       {
         path: '/home/dashboard',
         name:'dashboard',
-        components: {
-          dashboard: Dashboard
+        component: Dashboard
         },
-      },
       {
         path: '/home/tasks',
         name:'tasks',
-        components: {
-          tasks: Tasks
+        component: Tasks
         },
-      },
       {
         path: '/home/team',
         name:'team',
-        components: {
-          team: Team
+        component: Team
         },
-      },
   ],
     props: true
   }

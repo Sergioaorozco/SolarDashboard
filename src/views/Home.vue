@@ -31,9 +31,7 @@
       <div>
         <img v-tooltip.left="userLogged.displayName" class="w-12 h-12 rounded-full fixed right-10 top-4 z-20" :src="userLogged.photoURL || defaultImg" alt="profile image">
         <div class="mt-3">
-          <router-view name="dashboard"></router-view>
-          <router-view name="tasks"></router-view>
-          <router-view name="team"></router-view>
+          <router-view></router-view>
         </div>
       </div>
     </section>

@@ -33,7 +33,7 @@
             <div class="card bg-white h-auto px-4 inline-block">
               <div class="flex justify-between items-center mb-4">
                 <p class="text-xs bg-slate-100 px-4 py-1 rounded-md text-slate-600">Contact Management</p>
-                <span class="w-6 h-6 text-[0.7rem] bg-white border border-slate-200 rounded-full flex justify-center items-center hover:bg-slate-200 transition-colors duration-300"><i class="pi pi-ellipsis-v"></i></span>
+                <span class="actionsMenu w-6 h-6 text-[0.7rem] bg-white border border-slate-200 rounded-full flex justify-center items-center hover:bg-slate-200 transition-colors duration-300"><i class="pi pi-ellipsis-v"></i></span>
               </div>
               <h3 class="text-slate-500 font-semibold mb-2">Tarjeta 1</h3>
               <p class="text-slate-400 text-sm">A "Not Started" card refers to a task or project that has not yet been initiated or commenced. It representation of the task or project...</p>
@@ -42,7 +42,7 @@
             <div class="card bg-white h-auto px-4 inline-block">
               <div class="flex justify-between items-center mb-4">
                 <p class="text-xs bg-slate-100 px-4 py-1 rounded-md text-slate-600">Calltracking</p>
-                <span class="w-6 h-6 text-[0.7rem] bg-white border border-slate-200 rounded-full flex justify-center items-center hover:bg-slate-200 transition-colors duration-300"><i class="pi pi-ellipsis-v"></i></span>
+                <span class="actionsMenu w-6 h-6 text-[0.7rem] bg-white border border-slate-200 rounded-full flex justify-center items-center hover:bg-slate-200 transition-colors duration-300"><i class="pi pi-ellipsis-v"></i></span>
               </div>
               <h3 class="text-slate-500 font-semibold mb-2">Tarjeta 1</h3>
               <p class="text-slate-400 text-sm">A "Not Started" card refers to a task or project that has not yet been initiated or commenced. It representation of the task or project...</p>
@@ -51,7 +51,7 @@
             <div class="card bg-white h-auto px-4 inline-block">
               <div class="flex justify-between items-center mb-4">
                 <p class="text-xs bg-slate-100 px-4 py-1 rounded-md text-slate-600">Funds</p>
-                <span class="w-6 h-6 text-[0.7rem] bg-white border border-slate-200 rounded-full flex justify-center items-center hover:bg-slate-200 transition-colors duration-300"><i class="pi pi-ellipsis-v"></i></span>
+                <span class="actionsMenu w-6 h-6 text-[0.7rem] bg-white border border-slate-200 rounded-full flex justify-center items-center hover:bg-slate-200 transition-colors duration-300"><i class="pi pi-ellipsis-v"></i></span>
               </div>
               <h3 class="text-slate-500 font-semibold mb-2">Tarjeta 1</h3>
               <p class="text-slate-400 text-sm">A "Not Started" card refers to a task or project that has not yet been initiated or commenced. It representation of the task or project...</p>
@@ -60,7 +60,7 @@
             <div class="card bg-white h-auto px-4 inline-block">
               <div class="flex justify-between items-center mb-4">
                 <p class="text-xs bg-slate-100 px-4 py-1 rounded-md text-slate-600">Funds</p>
-                <span class="w-6 h-6 text-[0.7rem] bg-white border border-slate-200 rounded-full flex justify-center items-center hover:bg-slate-200 transition-colors duration-300"><i class="pi pi-ellipsis-v"></i></span>
+                <span class="actionsMenu w-6 h-6 text-[0.7rem] bg-white border border-slate-200 rounded-full flex justify-center items-center hover:bg-slate-200 transition-colors duration-300"><i class="pi pi-ellipsis-v"></i></span>
               </div>
               <h3 class="text-slate-500 font-semibold mb-2">Tarjeta 1</h3>
               <p class="text-slate-400 text-sm">A "Not Started" card refers to a task or project that has not yet been initiated or commenced. It representation of the task or project...</p>
@@ -110,3 +110,7 @@ export default {
 
 
 </script>
+
+<style lang="scss">
+.actionsMenu.pi { font-size: 0.7rem;}
+</style>

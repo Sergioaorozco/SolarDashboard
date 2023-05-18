@@ -24,7 +24,7 @@
         class="bg-blue-600 text-white rounded-md px-5 py-3 w-56 hover:bg-blue-800 transition-colors duration-300">Agregar
         Proyecto</button>
     </div>
-    <section class="grid grid-cols-4 mt-6 gap-x-4">
+    <section class="grid grid-cols-4 mt-6 gap-x-6">
       <div v-for="status in board" class="h-full">
         <article class="flex flex-col justify-center items-centers gap-y-4 pb-6">
           <div :class="status.color" class="card text-slate-600 font-semibold">{{ status.name }}</div>
@@ -75,7 +75,6 @@
 <script>
 import Dropdown from 'primevue/dropdown';
 import Chip from 'primevue/Chip';
-import Tag from 'primevue/tag';
 
 
 

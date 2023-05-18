@@ -6,7 +6,7 @@
         class="w-full md:w-14rem">
         <template #value="slotProps">
           <div v-if="slotProps.value" class="flex align-items-center">
-            <Chip>{{ slotProps.value.name }}</Chip>
+            <Chip>{{slotProps.value.name }}</Chip>
           </div>
           <span v-else>
             {{ slotProps.placeholder }}
@@ -75,8 +75,6 @@
 <script>
 import Dropdown from 'primevue/dropdown';
 import Chip from 'primevue/Chip';
-
-
 
 export default {
   data() {

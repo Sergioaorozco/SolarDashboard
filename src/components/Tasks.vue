@@ -74,7 +74,7 @@
 
 <script>
 import Dropdown from 'primevue/dropdown';
-import Chip from 'primevue/Chip';
+import Chip from 'primevue/chip';
 
 export default {
   data() {

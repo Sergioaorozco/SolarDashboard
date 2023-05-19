@@ -30,5 +30,4 @@ export default {
 </script>
 
 <style scoped>
-  ::v-deep .p-progressbar-label { display: none; }
 </style>

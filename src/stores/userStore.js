@@ -5,13 +5,13 @@ import firebase from 'firebase/compat/app'
 import router from '../router';
 // Firebase Configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyDVkwDplSu8sXq_rIa-Wl9HVGni5-QK6l0',
-  authDomain: 'sekretuadev.firebaseapp.com',
-  projectId: 'sekretuadev',
-  storageBucket: 'sekretuadev.appspot.com',
-  messagingSenderId: '980788870728',
-  appId: '1:980788870728:web:dd7b40108b27dae4d7a27d',
-  measurementId: 'G-JCHDVPC1LF'
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINSENDERID,
+  appId: import.meta.env.VITE_APPID,
+  measurementId: import.meta.env.VITE_MEASUREMENTID,
 }
 
 // Initialize App
